@@ -1,0 +1,22 @@
+{
+  "name": "vue-layout",
+  "version": "1.0.0",
+  "description": "to a project to learn layout of vue ",
+  "main": " ",
+  "scripts": {
+    "test": "npm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domekisuzi/vue-learn.git"
+  },
+  "keywords": [
+    "layout"
+  ],
+  "author": "domekisuzi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domekisuzi/vue-learn/issues"
+  },
+  "homepage": "https://github.com/domekisuzi/vue-learn#readme"
+}
