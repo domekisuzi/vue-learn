@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/domekisuzi/vue-learn/issues"
   },
-  "homepage": "https://github.com/domekisuzi/vue-learn#readme"
+  "homepage": "https://github.com/domekisuzi/vue-learn#readme",
+  "dependencies": {
+    "scss": "^0.2.4"
+  }
 }
