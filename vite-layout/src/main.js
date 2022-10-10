@@ -3,7 +3,7 @@ import './style.css'
 import App from './App.vue'
 import './styles/index.scss'
 
-import router from  './router/index.js'
+import router from  '@/router/index.js'
 
 import  ElementPlus from 'element-plus'
 const app = createApp(App)

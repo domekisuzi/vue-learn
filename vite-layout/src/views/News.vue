@@ -10,7 +10,7 @@
 <script>
 import   News from '@/components/News.vue'
 export default {
-  name: "News"
+  name: "News",
 
 }
 </script>

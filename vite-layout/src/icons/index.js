@@ -8,8 +8,6 @@ Object.keys(files).forEach((fileName)=>{
     utilFuns[name] =  files[fileName]
 })
 
-
-
 export default app =>{
     app.component('svg-icon',SvgIcon)
 }

@@ -3,21 +3,26 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+//vue 高版本的写法
 import  path from 'path'
+//vue3.0 的写法
 // const path = require('path');
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),
+
+  plugins: [
+      vue(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
+      //配置自动导入,可以不手动引用ref之类的
+      imports:['vue','vue-router']
     }),
     Components({
       resolvers: [ElementPlusResolver()],
     }),
   ],
-  //中专服务器，通过代理实现跨域
+  //中转服务器，通过代理实现跨域
   server:{
-
     proxy: {
       //path，随便写
       '/path': {
@@ -32,6 +37,7 @@ export default defineConfig({
       }
     }
   },
+  //配置别名
   resolve:{
     alias:{
       '@':path.resolve(__dirname,'./src'),

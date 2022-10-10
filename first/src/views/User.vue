@@ -11,6 +11,7 @@
 //     console.log(this.$route.params.id)
 //   }
 // }
+
 import  {useRoute} from 'vue-router'
 console.log(useRoute().params.id)
 </script>
