@@ -21,5 +21,8 @@
   "homepage": "https://github.com/domekisuzi/vue-learn#readme",
   "dependencies": {
     "scss": "^0.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.3"
   }
 }
