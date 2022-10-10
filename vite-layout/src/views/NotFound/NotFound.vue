@@ -9,44 +9,59 @@
 
   <A></A>
   <B></B>
+
+  <button @click="change">加载</button>
+
   <div ref="target">
-    <C v-if="targetIsVisible"> </C>
+    <C v-if="targetIsVisible.value"></C>
   </div>
-  <!--  <ul>-->
-  <!--    <li v-for="(item,index) in tabList" :key="index" @click="change(index)">{{item.name}}</li>-->
-  <!--  </ul>-->
-  <!--  <component :is="currentComponent.com"></component>-->
 
 </template>
 
+<!--TODO("异步组件完全不加载 ?")-->
 <script setup>
 import A from '@/components/A.vue'
 import B from '@/components/B.vue'
-// import C from '@/components/C.vue'
 import {useIntersectionObserver} from '@vueuse/core'
 import {defineAsyncComponent} from "vue";
 
-const C = defineAsyncComponent(() => {
-  import C from '@/components/C.vue'
+const C = defineAsyncComponent({
+  loader: () => import("../../components/C.vue"),
+  delay:200,
+  loadingComponent:B,
+  timeout:3000,
+  onError: ()=>{
+    console.log("加载失败")
+  }
 })
+
 
 let route = useRoute()
 let router = useRouter()
 const name = route.params.path
+
+let target = ref(null)
+let targetIsVisible = ref(false)
+
+const {stop} = useIntersectionObserver(
+    target, ([{isIntersecting}]) => {
+      console.log(isIntersecting)
+      if (isIntersecting) {
+        targetIsVisible.value = isIntersecting
+      }
+    }
+)
+
+
+const change = () => {
+  targetIsVisible.value = ! targetIsVisible.value
+}
 
 //vue3页面跳转
 function goLogin() {
   router.push("/login")
 }
 
-const target = ref(null)
-const targetIsVisible = ref(false)
-const {stop} = useIntersectionObserver(
-    target, ([{isIntersecting}]) => {
-      console.log(isIntersecting)
-      targetIsVisible.value = isIntersecting
-    }
-)
 // //markRaw,防止 markRaw响应提高性能
 // let tabList = reactive(
 //   [{name:"A：你们慢慢A",com:markRaw(A)},
@@ -83,8 +98,6 @@ const {stop} = useIntersectionObserver(
 // import useRoute  from  'vue-router';
 // let name = useRoute().params.id
 // console.log(name)
-
-
 </script>
 
 <style scoped>
