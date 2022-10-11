@@ -3,19 +3,25 @@ import {createRouter, createWebHashHistory} from "vue-router";
 const routes =
     [
 
-               {
-                    path: "/login",
-                    name: "Login",
-                    component: () => import("../views/login/index.vue"),
-                    meta: {
-                        title: "主页",
-                    }
-                },
-            {
-                //动态路由
-                path: '/user/:id',
-                component:() =>  import('../views/NotFound/NotFound.vue')
-            },
+        {
+            path: "/login",
+            name: "Login",
+            component: () => import("../views/login/index.vue"),
+            meta: {
+                title: "主页",
+            }
+        },
+        {
+            path: "/A",
+            name:"A",
+            component:() => import('../components/A.vue')
+        },
+        {
+            //动态路由
+            path: '/user/:id',
+            component: () => import('../views/NotFound/NotFound.vue')
+        },
+
         {
             //只可以是数字
             // path:"/news/:id(\\d+)",
@@ -23,7 +29,7 @@ const routes =
             // path:"/news/:id+",
             //参数可有可无
             path: "/news/:id?",
-            component:() => import("../views/News.vue")
+            component: () => import("../views/News.vue")
         },
         {
             //404界面,必须放最后面
@@ -32,7 +38,7 @@ const routes =
             component: () => import("@/views/NotFound/NotFound.vue")
         }
         ,
-        ]
+    ]
 
 const router = createRouter({
     history: createWebHashHistory(),
