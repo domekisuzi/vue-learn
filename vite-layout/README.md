@@ -18,14 +18,14 @@ npm install unplugin-auto-import -S
 
 
 
-export default defineConfig({
-plugins: [vue(),
-AutoImport({
-resolvers: [ElementPlusResolver()],
-//配置自动导入,可以不手动引用ref之类的
-imports: ['vue', 'vue-router']
-}),],
 
+    export default defineConfig({
+    plugins: [vue(),
+    AutoImport({
+    resolvers: [ElementPlusResolver()],
+    //配置自动导入,可以不手动引用ref之类的
+    imports: ['vue', 'vue-router']
+    }),],
     server: {
         proxy: {
             //path，随便写
@@ -45,4 +45,5 @@ imports: ['vue', 'vue-router']
             '@': path.resolve(__dirname, './src'),
         }
     }
-})
+    })
+
