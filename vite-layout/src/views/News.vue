@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import   News from '@/components/News.vue'
+
+
 export default {
   name: "News",
 

@@ -1,4 +1,5 @@
 import request  from "./request.js";
+import axios from "axios";
 
 export  const  login= () =>{
     return request({
@@ -7,3 +8,4 @@ export  const  login= () =>{
         responseType:'text'
     })
 }
+// axios.get('path/shixun/but/getAllButs')   : 正确语法

@@ -12,9 +12,17 @@ const routes =
             }
         },
         {
+            path: "/about",
+            name: "About",
+            component: () => import("../views/About.vue"),
+            meta: {
+                title: "主页",
+            }
+        },
+        {
             path: "/A",
-            name:"A",
-            component:() => import('../components/A.vue')
+            name: "A",
+            component: () => import('../components/A.vue')
         },
         {
             //动态路由

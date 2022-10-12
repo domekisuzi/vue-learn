@@ -1,10 +1,11 @@
 // made by domekisuzi @2022/10/11
 import request from "../utils/request.js";
 
-export function mostNew(data) {
+export const getData = () => {
     return request({
-        url: '/path/slider/getSliders',
-        method: 'post',
-        data
-    })
+            url: '/but/getAllButs',
+            method: 'GET',
+        responseType:'text'
+        }
+    )
 }
