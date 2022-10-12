@@ -18,14 +18,17 @@ npm install unplugin-auto-import -S
 
 
 
-
     export default defineConfig({
     plugins: [vue(),
     AutoImport({
     resolvers: [ElementPlusResolver()],
     //配置自动导入,可以不手动引用ref之类的
     imports: ['vue', 'vue-router']
-    }),],
+    }),
+      Components({
+            resolvers: [ElementPlusResolver()],
+        }),
+    ],
     server: {
         proxy: {
             //path，随便写
@@ -47,3 +50,11 @@ npm install unplugin-auto-import -S
     }
     })
 
+
+引入element-plus:爆好康UI
+
+npm install element-plus --save
+
+下载element-plus 按需引入插件
+
+npm install -D unplugin-vue-components

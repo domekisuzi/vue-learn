@@ -6,14 +6,14 @@
   <p>notfound</p>
   <p>{{ name }}</p>
   <button @click="goLogin">跳转</button>
+  {{ targetIsVisible }}
 
-  <A></A>
   <B></B>
 
   <button @click="change">加载</button>
-
+  <C  :v-if="targetIsVisible.value"></C>
   <div ref="target">
-    <C v-if="targetIsVisible.value"></C>
+
   </div>
 
 </template>
@@ -22,8 +22,9 @@
 <script setup>
 import A from '@/components/A.vue'
 import B from '@/components/B.vue'
+// import C from  '@/components/C.vue'
 import {useIntersectionObserver} from '@vueuse/core'
-import {defineAsyncComponent} from "vue";
+import {defineAsyncComponent, ref} from "vue";
 
 const C = defineAsyncComponent({
   loader: () => import("../../components/C.vue"),
@@ -35,26 +36,39 @@ const C = defineAsyncComponent({
   }
 })
 
+// const C = defineAsyncComponent({
+//
+//   loader: () => import('../../components/C.vue'),
+//   errorComponent:B,
+//   loadingComponent:B
+// })
 
+// const C = () => import('../../components/C.vue')
 let route = useRoute()
 let router = useRouter()
 const name = route.params.path
 
 let target = ref(null)
-let targetIsVisible = ref(false)
+let targetIsVisible = ref(true)
 
-const {stop} = useIntersectionObserver(
-    target, ([{isIntersecting}]) => {
-      console.log(isIntersecting)
-      if (isIntersecting) {
-        targetIsVisible.value = isIntersecting
-      }
-    }
-)
+setTimeout(() => {
+  const C =  import('../About.vue')
+  targetIsVisible.value = true
+  console.log(targetIsVisible.value)
+}, 2000)
 
+
+// const {stop} = useIntersectionObserver(
+//     target, ([{isIntersecting}]) => {
+//       console.log(isIntersecting)
+//       if (isIntersecting) {
+//         targetIsVisible.value = isIntersecting
+//       }
+//     }
+// )
 
 const change = () => {
-  targetIsVisible.value = ! targetIsVisible.value
+  targetIsVisible.value = !targetIsVisible.value
 }
 
 //vue3页面跳转

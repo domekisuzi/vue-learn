@@ -1,13 +1,11 @@
 <!-- made by domekisuzi @2022/10/12 -->
 
 <template>
-
+  <Header></Header>
 </template>
 
 <script>
-export default {
-  name: "Home"
-}
+import Header from '@/components/common/Header.vue'
 </script>
 
 <style scoped>
