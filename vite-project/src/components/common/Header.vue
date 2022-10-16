@@ -50,21 +50,24 @@ header {
   margin: 0 auto;
 
 }
+
 .header-l {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .logo {
   width: 127px;
   height: 50px;
 }
-.logo img{
+
+.logo img {
   width: 100%;
   height: 100%;
 }
 
-.header-l ul{
+.header-l ul {
   display: flex;
 }
 </style>
