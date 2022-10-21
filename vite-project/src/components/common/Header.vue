@@ -5,11 +5,16 @@
     <div class="header-main">
 
       <div class="header-l">
-        <h1 class="logo"><img src="@/assets/domekisuzi.png"/></h1>
+        <h1 class="logo">
+
+          <img src="../../assets/domekisuzi.png"/>
+
+        </h1>
         <ul>
           <li class="active">首 页</li>
-          <li>课 程</li>
-          <li>会 员</li>
+
+          <li>待 定</li>
+          <li>待 定</li>
         </ul>
       </div>
 
@@ -18,14 +23,13 @@
         <div class="search">
           <input type="" name="" placeholder="搜索想要的美少女">
           <el-icon :size="20">
-            <Search />
+            <Search/>
           </el-icon>
         </div>
 
-
         <div class="shop">
           <el-icon :size="20">
-            <ShoppingCart />
+            <ShoppingCart/>
           </el-icon>
         </div>
         <div class="login">登录/注册</div>
@@ -39,7 +43,7 @@
 </template>
 
 <script setup>
-import {Search ,ShoppingCart} from '@element-plus/icons-vue'
+import {Search, ShoppingCart} from '@element-plus/icons-vue'
 </script>
 
 <style scoped>
@@ -55,15 +59,15 @@ header {
   width: 1000px;
   height: 100px;
   /*居中*/
-
   margin: 0 auto;
 }
 
-.header-l  {
+.header-l {
   display: flex;
   /*flex-direction: column;*/
   justify-content: center;
   align-items: center;
+
 }
 
 .logo {
@@ -84,23 +88,27 @@ header {
   display: flex;
   height: 50px;
 }
-.header-l ul li{
+
+.header-l ul li {
   line-height: 50px;
   font-weight: 500;
   cursor: pointer;
 }
+
 /* +排除第一个*/
-.header-l ul li + li{
+.header-l ul li + li {
   margin-left: 79px;
   font-size: 16px;
   color: #808080;
 }
-.active{
+
+.active {
   position: relative;
   color: #3585FF;
 }
+
 /*在每个元素后面插入新的内容*/
-.active:after{
+.active:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -110,12 +118,14 @@ header {
   background: #535bf2;
   margin-left: -20%;
 }
-.header-r{
+
+.header-r {
   display: flex;
   align-items: center;
   margin-left: 50px;
 }
-.header-r .search{
+
+.header-r .search {
   display: flex;
   align-items: center;
   padding: 0 10px;
@@ -125,7 +135,8 @@ header {
   opacity: 1;
   border-radius: 5px;
 }
-.header-r .search input{
+
+.header-r .search input {
   width: 270px;
   height: 43px;
   border: none;
@@ -133,16 +144,19 @@ header {
   /*使得背景框消失*/
   outline: none;
 }
-.header-r   .shop{
+
+.header-r .shop {
   display: flex;
   align-items: center;
   margin-left: 42px;
   cursor: pointer;
 }
-.header-r .login{
+
+.header-r .login {
   margin-left: 39px;
   font-size: 16px;
   color: #808080;
   cursor: pointer;
 }
+
 </style>

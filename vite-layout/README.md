@@ -58,3 +58,15 @@ npm install element-plus --save
 下载element-plus 按需引入插件
 
 npm install -D unplugin-vue-components
+
+下载pinia插件
+
+npm i -S pinia
+
+以及
+
+npm i -S pinia-plugin-persist
+
+下载 router
+
+npm install vue-router
