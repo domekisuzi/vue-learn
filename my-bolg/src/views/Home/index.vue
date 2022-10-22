@@ -5,15 +5,7 @@
 
 
   <Header></Header>
-  <div class="center">
-      <div class="main">
-
-      </div>
-      <div class="slider">
-
-      </div>
-
-    </div>
+  <MyNote></MyNote>
     <div class="footer">
 
     </div>
@@ -22,28 +14,15 @@
 
 <script setup>
 import Header from '../../components/Header.vue'
-
+import MyNote from '../../components/MyNote.vue'
 </script>
 
 <style scoped>
-.center{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main {
-  background-color: orange;
-  width: 800px;
-  height: 1000px;
-}
-.slider{
-  background-color: yellow;
-  width: 200px;
-  height: 300px;
-}
+/*将footer设置为相对布局，就可以永久的待在底部*/
 .footer{
   background: red;
+  position: relative;
+  margin-top: 0px;
   width: 100%;
   height: 200px;
 }
