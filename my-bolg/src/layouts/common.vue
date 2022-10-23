@@ -3,12 +3,12 @@
 -->
 <!--公共页面，头部全部加入header-->
 <template>
-  <Header/>
+<!--  <Header/>-->
   <router-view></router-view>
 </template>
 
 <script setup>
-import Header from '../components/Header.vue'
+// import Header from '../components/Header.vue'
 
 </script>
 

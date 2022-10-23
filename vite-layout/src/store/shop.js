@@ -21,5 +21,4 @@ export const shop = defineStore('shop',
             }
         }
     }
-
 )

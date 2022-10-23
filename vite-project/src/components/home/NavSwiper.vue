@@ -98,11 +98,27 @@
 
     </div>
   </div>
-
+  {{test}}
 </template>
 
 <script setup>
 import {ArrowRight} from "@element-plus/icons-vue"
+import {getData} from '../../utils/api/slider.js'
+import {onBeforeMount} from "vue";
+import {useUserStore} from "../../store/user.js";
+
+const useStore = useUserStore();
+
+
+let test = ref("")
+onBeforeMount(()=>{
+  getData().then(
+      data => {
+        test.value = data
+      }
+  )
+})
+
 
 </script>
 
@@ -123,7 +139,6 @@ import {ArrowRight} from "@element-plus/icons-vue"
 
 .swiper-t {
   display: flex;
-
   height: 373px;
   border-radius: 11px 11px 0px 0px;
 }
@@ -143,7 +158,7 @@ import {ArrowRight} from "@element-plus/icons-vue"
   justify-content: space-around;
   width: 160px;
   height: 37px;
-  background: #2B283D;
+  /*background: #2B283D;*/
   font-size: 16px;
   margin-top: 35px;
   color: #F2F2F2;
