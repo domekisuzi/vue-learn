@@ -14,12 +14,16 @@ const routes =
         //自我介绍页面
         {
             path: "/about",
+
             name: "About",
-            component: () => import('../views/About/index.vue'),
+            // component: () => import('../views/About/index.vue'),
+            component: () => import("../views/About/index.vue"),
         },
 
         {
-            //404界面,必须放最后面
+            // path: "/",
+            component: () => import("../views/Home/index.vue"),
+            // 404界面,必须放最后面
             path: '/:path(.*)',
             // component: () => import("../views/")
         }

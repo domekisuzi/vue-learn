@@ -2,15 +2,161 @@
     @2022/10/21
 -->
 <template>
+  <div class="body">
+    <div class="home">
+      <div class="header">
+        <Header/>
+
+      </div>
+      <div class="self">
+        <Slider>
+          <div class="slider">
+              <el-avatar  src="src/assets/domekisuzi.png" :size="100"></el-avatar>
+              <p>一个快乐肥宅</p>
+              <el-divider></el-divider>
+
+              <span class="attr" v-for="i in 5" key="5">
+                <el-image :src="hobby" ></el-image>
+                <h1>{{i}}</h1>
+              </span>
+          </div>
+        </Slider>
+        <div class="other">
+          <el-card class="skill">
+
+            <el-row :gutter="10">
+              <el-col :span="6"><Skill></Skill></el-col>
+              <el-col :span="6"><Skill></Skill></el-col>
+              <el-col :span="6"><Skill></Skill></el-col>
+              <el-col :span="6"><Skill></Skill></el-col>
+            </el-row>
+            <el-row :gutter="10">
+              <el-col :span="6"><Skill></Skill></el-col>
+              <el-col :span="6"><Skill></Skill></el-col>
+              <el-col :span="6"><Skill></Skill></el-col>
+              <el-col :span="6"><Skill></Skill></el-col>
+            </el-row>
+
+          </el-card>
+          <el-card class="introduction">
+            吹牛皮
+          </el-card>
+        </div>
+
+      </div>
+
+      <div class="footer">
+        <Footer/>
+      </div>
+    </div>
+  </div>
+
 
 </template>
 
-<script>
-export default {
-  name: "index"
-}
+<script setup>
+import  Header from '../../components/Header.vue'
+import  Footer  from '../../components/Footer.vue'
+import Slider from "../../components/Slider.vue";
+import Skill from "../../components/Skill.vue";
+const hobby = 'src/assets/hobby.svg'
+
+
 </script>
 
 <style scoped>
+
+.home{
+  display: flex;
+  width: 100%;
+  top: 0;
+  flex-direction: column;
+}
+
+.body{
+  background-image: url('../../assets/aosen.jpg') ;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover ;
+}
+
+.header{
+  /*position: fixed;*/
+  width: 100%;
+  height: 50px;
+}
+
+.self{
+  margin-top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+ .slider{
+   margin-top: 50px;
+   left: 10%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+ }
+
+ .other{
+   width: 60%;
+ }
+
+.other .skill {
+  position: relative;
+  background : linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%)  ;
+  width: 100%;
+  height:300px;
+  display: flex;
+
+  flex-direction: row;
+
+}
+.other .introduction {
+  position: relative;
+  background : linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%)  ;
+  width: 100%;
+  height:300px;
+  margin-top: 10px;
+}
+
+.el-image{
+  width: 40px;
+  height: 40px;
+}
+
+.attr{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200%;
+}
+/*深穿，使得cardbody占据100%的容器*/
+.el-card :deep(.el-card__body){
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+.el-row {
+  height: 45%;
+  width: 80%;
+}
+.el-row:last-child {
+  margin-bottom: 0;
+}
+.el-col {
+  border-radius: 4px;
+}
+
 
 </style>
