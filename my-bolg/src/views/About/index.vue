@@ -11,13 +11,13 @@
       <div class="self">
         <Slider>
           <div class="slider">
-              <el-avatar  src="src/assets/domekisuzi.png" :size="100"></el-avatar>
-              <p>一个快乐肥宅</p>
-              <el-divider></el-divider>
+            <el-avatar src="src/assets/domekisuzi.png" :size="100"></el-avatar>
+            <p>一个快乐肥宅</p>
+            <el-divider></el-divider>
 
-              <span class="attr" v-for="i in 5" key="5">
-                <el-image :src="hobby" ></el-image>
-                <h1>{{i}}</h1>
+            <span class="attr" v-for="i in 5" key="5">
+                <el-image :src="hobby"></el-image>
+                <h1>{{ i }}</h1>
               </span>
           </div>
         </Slider>
@@ -25,21 +25,53 @@
           <el-card class="skill">
 
             <el-row :gutter="10">
-              <el-col :span="6"><Skill></Skill></el-col>
-              <el-col :span="6"><Skill></Skill></el-col>
-              <el-col :span="6"><Skill></Skill></el-col>
-              <el-col :span="6"><Skill></Skill></el-col>
+              <el-col :span="6">
+                <Skill>
+                  <el-image lazy="lazy" src="src/assets/android.svg"></el-image>
+                </Skill>
+              </el-col>
+              <el-col :span="6">
+                <Skill>
+                  <el-image lazy="lazy" src="src/assets/bug.svg"></el-image>
+                </Skill>
+              </el-col>
+              <el-col :span="6">
+                <Skill>
+                  <el-image lazy="lazy" src="src/assets/c++.svg"></el-image>
+                </Skill>
+              </el-col>
+              <el-col :span="6">
+                <Skill>
+                  <el-image lazy="lazy" src="src/assets/docker.svg"></el-image>
+                </Skill>
+              </el-col>
             </el-row>
             <el-row :gutter="10">
-              <el-col :span="6"><Skill></Skill></el-col>
-              <el-col :span="6"><Skill></Skill></el-col>
-              <el-col :span="6"><Skill></Skill></el-col>
-              <el-col :span="6"><Skill></Skill></el-col>
+              <el-col :span="6">
+                <Skill>
+                  <el-image lazy="lazy" src="src/assets/linux.svg"></el-image>
+                </Skill>
+              </el-col>
+              <el-col :span="6">
+                <Skill>
+                  <el-image lazy="lazy" src="src/assets/spark.svg"></el-image>
+                </Skill>
+              </el-col>
+              <el-col :span="6">
+                <Skill>
+                  <el-image lazy="lazy" src="src/assets/springboot.svg"></el-image>
+                </Skill>
+              </el-col>
+              <el-col :span="6">
+                <Skill>
+                  <el-image lazy="lazy" src="src/assets/vue.svg"></el-image>
+                </Skill>
+              </el-col>
             </el-row>
 
           </el-card>
           <el-card class="introduction">
-            吹牛皮
+            <v-md-preview :text="text"></v-md-preview>
           </el-card>
         </div>
 
@@ -55,39 +87,75 @@
 </template>
 
 <script setup>
-import  Header from '../../components/Header.vue'
-import  Footer  from '../../components/Footer.vue'
+import Header from '../../components/Header.vue'
+import Footer from '../../components/Footer.vue'
 import Slider from "../../components/Slider.vue";
 import Skill from "../../components/Skill.vue";
+
 const hobby = 'src/assets/hobby.svg'
 
+const text = ref("## about me\n" +
+    "\n" +
+    "吹在前面的话：博主日常发癫，图一乐就可。如有雷同，~~那确实牛逼~~ 。 \n" +
+    "\n" +
+    "------\n" +
+    "\n" +
+    "#### 关于大学时期到底在干嘛  \n" +
+    "\n" +
+    "- 摆烂\n" +
+    "\n" +
+    "- 进食\n" +
+    "\n" +
+    "- ###  看番\n" +
+    "\n" +
+    "- 跟实验室打架 \n" +
+    "\n" +
+    "- 调教室友 \n" +
+    "\n" +
+    "#### 关于大学时期的小目标 \n" +
+    "\n" +
+    "- #### ~~当日本总理大臣~~\n" +
+    "\n" +
+    "![chika](./src/assets/chika.webp)\n" +
+    "\n" +
+    "#### 关于为什么至今还是母胎solo \n" +
+    "\n" +
+    "*这是因为上辈子桃花运太旺，所以本人也没什么办法*\n" +
+    "\n" +
+    "#### 爱好\n" +
+    "\n" +
+    "- 唱，跳，rap\n" +
+    "- 来自深渊 \n" +
+    "- ~~无聊，我要看他们血流成河~~ \n" +
+    "- **说胡话**\n" +
+    "\n")
 
 </script>
 
 <style scoped>
 
-.home{
+.home {
   display: flex;
   width: 100%;
   top: 0;
   flex-direction: column;
 }
 
-.body{
-  background-image: url('../../assets/aosen.jpg') ;
+.body {
+  background-image: url('../../assets/aosen.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size:cover ;
+  background-size: cover;
 }
 
-.header{
+.header {
   /*position: fixed;*/
   width: 100%;
   height: 50px;
 }
 
-.self{
+.self {
   margin-top: 0;
   display: flex;
   justify-content: space-around;
@@ -95,50 +163,53 @@ const hobby = 'src/assets/hobby.svg'
   position: relative;
   width: 100%;
 }
- .slider{
-   margin-top: 50px;
-   left: 10%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
- }
 
- .other{
-   width: 60%;
- }
+.slider {
+  margin-top: 50px;
+  left: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.other {
+  width: 60%;
+}
 
 .other .skill {
   position: relative;
-  background : linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%)  ;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%);
   width: 100%;
-  height:300px;
+  height: 300px;
   display: flex;
 
   flex-direction: row;
 
 }
+
 .other .introduction {
   position: relative;
-  background : linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%)  ;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%);
   width: 100%;
-  height:300px;
+
   margin-top: 10px;
 }
 
-.el-image{
+.el-image {
   width: 40px;
   height: 40px;
 }
 
-.attr{
+.attr {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 200%;
 }
+
 /*深穿，使得cardbody占据100%的容器*/
-.el-card :deep(.el-card__body){
+.el-card :deep(.el-card__body) {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -147,16 +218,18 @@ const hobby = 'src/assets/hobby.svg'
   flex-direction: column;
   align-items: center;
 }
+
 .el-row {
   height: 45%;
   width: 80%;
 }
+
 .el-row:last-child {
   margin-bottom: 0;
 }
+
 .el-col {
   border-radius: 4px;
 }
-
 
 </style>

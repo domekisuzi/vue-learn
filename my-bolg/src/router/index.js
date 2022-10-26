@@ -8,6 +8,7 @@ const routes =
         //主页面
         {
             path: "/home",
+            alias:'/',
             name: "Home",
             component: () => import("../views/Home/index.vue"),
         },

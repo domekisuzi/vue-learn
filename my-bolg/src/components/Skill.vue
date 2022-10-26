@@ -2,7 +2,7 @@
 
 <template>
   <div class="my-skill">
-
+    <slot></slot>
   </div>
 </template>
 
