@@ -28,21 +28,25 @@
               <el-col :span="6">
                 <Skill>
                   <el-image lazy="lazy" src="src/assets/android.svg"></el-image>
+                  <span>安卓</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
                   <el-image lazy="lazy" src="src/assets/bug.svg"></el-image>
+                  <span>爬虫</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
                   <el-image lazy="lazy" src="src/assets/c++.svg"></el-image>
+                  <span>c/c++</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
                   <el-image lazy="lazy" src="src/assets/docker.svg"></el-image>
+                  <span>docker</span>
                 </Skill>
               </el-col>
             </el-row>
@@ -50,21 +54,25 @@
               <el-col :span="6">
                 <Skill>
                   <el-image lazy="lazy" src="src/assets/linux.svg"></el-image>
+                  <span>linux</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
                   <el-image lazy="lazy" src="src/assets/spark.svg"></el-image>
+                  <span>spark</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
                   <el-image lazy="lazy" src="src/assets/springboot.svg"></el-image>
+                  <span>springboot</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
                   <el-image lazy="lazy" src="src/assets/vue.svg"></el-image>
+                  <span>vue.js</span>
                 </Skill>
               </el-col>
             </el-row>
@@ -179,20 +187,21 @@ const text = ref("## about me\n" +
 
 .other .skill {
   position: relative;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%);
+  /*background: linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%);*/
+  background-image: url("../../assets/00002.webp");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
   height: 300px;
   display: flex;
-
   flex-direction: row;
-
 }
 
 .other .introduction {
   position: relative;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.83) 1%, rgba(255, 255, 255, 0.83) 90%);
   width: 100%;
-
   margin-top: 10px;
 }
 

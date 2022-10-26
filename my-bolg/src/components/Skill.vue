@@ -12,7 +12,12 @@
 
 <style scoped>
 .my-skill{
-  background-color: #99a9bf;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  /*background-color: rgba(255, 255, 255, 0.65);*/
+
   height: 100%;
   width: 100%;
   border-radius: 4px;

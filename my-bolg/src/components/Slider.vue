@@ -19,6 +19,7 @@
   position: sticky;
   width: 25%;
   height: 567.333px ;
+  /*同时加入 bottom和top，使得能够从头到位黏附*/
   bottom: 0;
   top: 0;
   /*加入margin是使得不会离的太近*/

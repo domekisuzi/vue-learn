@@ -20,7 +20,11 @@ const routes =
             // component: () => import('../views/About/index.vue'),
             component: () => import("../views/About/index.vue"),
         },
-
+        {
+            path: "/bigdata",
+            name: "BigData",
+            component:() => import('../views/BigData/index.vue')
+        },
         {
             // path: "/",
             component: () => import("../views/Home/index.vue"),
@@ -29,6 +33,7 @@ const routes =
             // component: () => import("../views/")
         }
         ,
+
     ]
 
 const router = createRouter({
