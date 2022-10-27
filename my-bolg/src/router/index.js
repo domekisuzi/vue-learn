@@ -23,6 +23,27 @@ const routes =
         {
             path: "/bigdata",
             name: "BigData",
+            // component:() => import('../views/BigData/index.vue')
+            component:() => import('../layouts/bigdata.vue')
+        },
+        {
+            path: "/bigdata/all",
+            name: "BigDataAll",
+            component:() => import('../views/BigDataAll/index.vue')
+        },
+        {
+            path: "/bigdata/person",
+            name: "BigDataPerson",
+            component:() => import('../views/BigData/index.vue')
+        },
+        {
+            path: "/bigdata/history",
+            name: "BigDataHistory",
+            component:() => import('../views/BigData/index.vue')
+        },
+        {
+            path: "/bigdata/feedback",
+            name: "BigDataFeedback",
             component:() => import('../views/BigData/index.vue')
         },
         {
