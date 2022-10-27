@@ -2,6 +2,7 @@
 
 <template>
 
+
   <div class="container">
     <el-container>
       <el-aside width="200px">
@@ -73,7 +74,7 @@
           </el-menu>
         </el-header>
         <el-main>
-          <component :is="currentComponent"></component>
+          <component :is="currentComponent.com"></component>
         </el-main>
       </el-container>
     </el-container>
@@ -93,9 +94,21 @@ import All from  '@/views/BigDataAll/index.vue'
 import History from  '@/views/BigDataHistory/index.vue'
 import Feedback from  '@/views/BigDataFeedback/index.vue'
 import Person from  '@/views/BigDataPerson/index.vue'
+import {markRaw, reactive} from "vue";
 
-let currentComponent = All;
+//markRaw 可以使得组件不去响应
+let componentList  =  reactive([
+    {name:'all',com:markRaw(All)},
+  {name:'history',com:markRaw(History)},
+  {name:'feedback',com:markRaw(Feedback)},
+  {name:'person',com:markRaw(Person)},
+]);
 
+
+
+let currentComponent = reactive({com:componentList[0].com})
+
+console.log(currentComponent)
 const handleOpen = (key, keyPath) => {
   // currentComponent =
   // console.log(key, keyPath)
@@ -104,25 +117,10 @@ const handleClose = (key, keyPath) => {
   // console.log(key, keyPath)
 }
 
-
 const handleSelect = (index)=>{
-  switch (index) {
-    case 1:
-      currentComponent = All
-      break;
-    case 2:
-      currentComponent = Person
-      break;
-    case 3:
-      currentComponent = History
-      break;
-    case 4:
-      currentComponent = Feedback
-      break;
-    default:
-      console.log('error index')
-  }
+  currentComponent.com  = componentList[index-1].com
 }
+
 function init(){
 
 }
@@ -131,10 +129,12 @@ function init(){
 
 <style scoped>
 .container{
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #161634;
+  background-color:  #99a9bf;
+  background-color:  #99a9bf;
   width:100%;
   height:100%;
 }
@@ -143,10 +143,10 @@ function init(){
   padding: 0;
 }
 .el-main{
-  background-color: #161634;
+  /*background-color: #161634;*/
 }
 #menu-aside{
-  height: 714.400px;
+  height: 721.666px;
 }
 #menu-header{
   width: 100%;
