@@ -11,7 +11,7 @@
           </template>
         </MyCard >
       </el-col>
-      <el-col :span="8">
+      <el-col  :span="8">
         <MyCard class="card-header">
           <template></template>
         </MyCard>
