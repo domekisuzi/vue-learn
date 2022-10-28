@@ -6,20 +6,26 @@
     <el-row :gutter="20" class="row-header">
       <el-col :span="8">
         <MyCard class="card-header">
-          <template>
+          <template #default>
             <p>入库人数</p>
+
           </template>
         </MyCard >
+
       </el-col>
       <el-col  :span="8">
         <MyCard class="card-header">
-          <template></template>
+          <template #default>
+            <p>历代管理人员</p>
+          </template>
         </MyCard>
       </el-col>
 
       <el-col :span="8">
         <MyCard class="card-header">
-          <template></template>
+          <template #default>
+            <p>成立天数</p>
+          </template>
         </MyCard>
       </el-col>
     </el-row>
@@ -27,15 +33,21 @@
     <el-row :gutter="20" class="row-footer">
       <el-col :span="8" class="col-erect" >
         <MyCard class="card-erect">
-          <template></template>
+          <template #default>
+            <p>累计答辩次数</p>
+          </template>
         </MyCard >
         <MyCard class="card-erect">
-          <template></template>
+          <template #default>
+            <p>男女比例</p>
+          </template>
         </MyCard>
       </el-col>
       <el-col :span="16">
         <MyCard class="card-rank">
-          <template></template>
+          <template #default>
+            <p>rankEcharts</p>
+          </template>
         </MyCard>
       </el-col>
     </el-row>
@@ -44,6 +56,7 @@
 
 <script setup>
 import MyCard from  '../../components/MyCard.vue'
+import  * as echarts from 'echarts'
 
 </script>
 
@@ -54,11 +67,14 @@ import MyCard from  '../../components/MyCard.vue'
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 721.666px;
 }
+
 .el-row{
   width: 100%;
-
 }
+
+
 .el-col{
   height: 100%;
 }
@@ -71,7 +87,6 @@ import MyCard from  '../../components/MyCard.vue'
 .card-header{
   height: 100%;
 }
-
 .card-erect{
   margin-top: 10px;
   height: 50%;

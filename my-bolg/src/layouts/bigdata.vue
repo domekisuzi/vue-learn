@@ -1,8 +1,6 @@
 <!-- made by domekisuzi @2022/10/26 -->
 
 <template>
-
-
   <div class="container">
     <el-container>
       <el-aside width="200px">
@@ -46,10 +44,9 @@
       </el-aside>
       <el-container>
         <el-header>
-
           <el-menu
               :default-active="activeIndex2"
-              id="menu-hedaer"
+              id="menu-header"
               mode="horizontal"
               background-color="#545c64"
               text-color="#fff"
@@ -99,23 +96,13 @@ import {markRaw, reactive} from "vue";
 //markRaw 可以使得组件不去响应
 let componentList  =  reactive([
     {name:'all',com:markRaw(All)},
+  {name:'person',com:markRaw(Person)},
   {name:'history',com:markRaw(History)},
   {name:'feedback',com:markRaw(Feedback)},
-  {name:'person',com:markRaw(Person)},
 ]);
-
-
 
 let currentComponent = reactive({com:componentList[0].com})
 
-console.log(currentComponent)
-const handleOpen = (key, keyPath) => {
-  // currentComponent =
-  // console.log(key, keyPath)
-}
-const handleClose = (key, keyPath) => {
-  // console.log(key, keyPath)
-}
 
 const handleSelect = (index)=>{
   currentComponent.com  = componentList[index-1].com
@@ -129,14 +116,11 @@ function init(){
 
 <style scoped>
 .container{
-
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:  #99a9bf;
-  background-color:  #99a9bf;
+  background-color: #222C32;;
   width:100%;
-  height:100%;
 }
 .el-header{
   width: 100%;
@@ -146,9 +130,12 @@ function init(){
   /*background-color: #161634;*/
 }
 #menu-aside{
+  position: fixed;
   height: 721.666px;
+  width: 200px;
 }
 #menu-header{
   width: 100%;
 }
+
 </style>
