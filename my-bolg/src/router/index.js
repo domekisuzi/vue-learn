@@ -21,6 +21,11 @@ const routes =
             component: () => import("../views/About/index.vue"),
         },
         {
+            path: "/life",
+            name: "MyLife",
+            component:() =>  import('../views/MyLife/index.vue')
+        },
+        {
             path: "/bigdata",
             name: "BigData",
             // component:() => import('../views/BigData/index.vue')
@@ -46,6 +51,8 @@ const routes =
             name: "BigDataFeedback",
             component:() => import('../views/BigData/index.vue')
         },
+
+
         {
             // path: "/",
             component: () => import("../views/Home/index.vue"),
@@ -54,6 +61,7 @@ const routes =
             // component: () => import("../views/")
         }
         ,
+
 
     ]
 
