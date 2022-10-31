@@ -45,7 +45,6 @@
       <el-container>
         <el-header>
           <el-menu
-              :default-active="activeIndex2"
               id="menu-header"
               mode="horizontal"
               background-color="#545c64"
@@ -54,7 +53,7 @@
               @select="handleHeader"
           >
             <el-menu-item index="1" disabled>登录</el-menu-item>
-            <el-menu-item index="2" disabled>暂定</el-menu-item>
+            <el-menu-item index="2" disabled>主题</el-menu-item>
             <el-menu-item index="3">暂定</el-menu-item>
             <el-sub-menu index="4" disabled="true">
               <template #title>个人中心</template>
@@ -112,7 +111,12 @@ let currentComponent = reactive({com:componentList[0].com})
 const handleSelect = (index)=>{
   currentComponent.com  = componentList[index-1].com
 }
+const handleOpen = ()=>{
 
+}
+const handleClose = () =>{
+
+}
 function init(){
 
 }
