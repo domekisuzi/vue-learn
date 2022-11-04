@@ -32,6 +32,7 @@ import Header from '../../components/Header.vue'
 import MyNote from '../../components/MyNote.vue'
 import Footer from '../../components/Footer.vue'
 import FontAppear from '../../components/FontAppear.vue'
+import {getAllNotes} from "../../api/api.js";
 
 
 // router.push('/about')
@@ -39,6 +40,9 @@ let everyday_context = ref('世界上只有一种英雄主义\n' +
     '便是注视过生活的真面目后\n依然热爱它\n'
 )
 let everyday_author = ref('-罗曼罗兰《米开朗基罗传》')
+
+
+
 </script>
 
 <style scoped>

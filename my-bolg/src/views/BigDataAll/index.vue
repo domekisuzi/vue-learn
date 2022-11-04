@@ -8,7 +8,7 @@
         <MyCard class="card-header">
           <template #default>
             <p>入库人数</p>
-
+            <p>{{studentNumber}}</p>
           </template>
         </MyCard >
 
@@ -17,6 +17,7 @@
         <MyCard class="card-header">
           <template #default>
             <p>历代管理人员</p>
+            <p>{{adminNumber}}</p>
           </template>
         </MyCard>
       </el-col>
@@ -25,6 +26,7 @@
         <MyCard class="card-header">
           <template #default>
             <p>成立天数</p>
+            <p>{{dayAcc}}</p>
           </template>
         </MyCard>
       </el-col>
@@ -35,11 +37,12 @@
         <MyCard class="card-erect">
           <template #default>
             <p>累计答辩次数</p>
+            <p>{{butNumber}}</p>
           </template>
         </MyCard >
-        <MyCard class="card-erect">
+        <MyCard class="card-erect" id="wait">
           <template #default>
-            <p>男女比例</p>
+            <p>暂定</p>
           </template>
         </MyCard>
       </el-col>
@@ -54,8 +57,17 @@
 <script setup>
 import MyCard from  '../../components/MyCard.vue'
 import  * as echarts from 'echarts'
+import {onBeforeMount, onMounted} from "vue";
+import {getAllButs} from "../../api/api.js";
 
-const s = setTimeout (()=>{
+const studentNumber = 1
+const adminNumber = 1
+const dayAcc =  1
+const butNumber = 1
+
+
+
+const init = setTimeout (()=>{
   var myChart = echarts.init(document.getElementById('rank'));
   let  option = {
     title: {
@@ -111,7 +123,7 @@ const s = setTimeout (()=>{
         name: '21级',
         type: 'bar',
         itemStyle: {
-          barBorderRadius: [50,50,0,0]
+          borderRadius: [50,50,0,0]
         },
         barWidth: '60',
         data: [10, 52, 200, 330, 220]
@@ -120,7 +132,7 @@ const s = setTimeout (()=>{
         name: '22级',
         type: 'bar',
         itemStyle: {
-          barBorderRadius: [50,50,0,0]
+          borderRadius: [50,50,0,0]
         },
         barWidth: '60',
         data: [10, 52, 200, 330, 220]
@@ -135,8 +147,23 @@ const s = setTimeout (()=>{
   };
 
   option && myChart.setOption(option);
-})
-s
+} )
+onBeforeMount(
+    ()=>{
+      //接口经测试无误
+      // console.log(login())
+      console.log(getAllButs())
+    }
+)
+onMounted(
+    ()=>{
+      init
+      // login()
+    }
+)
+
+
+
 </script>
 
 <style scoped>
@@ -170,5 +197,9 @@ s
 .card-rank{
   margin-top: 10px;
   height: 100%;
+}
+
+#wait{
+  background: rgba(255, 255, 255, 0.65);
 }
 </style>

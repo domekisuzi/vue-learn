@@ -1,12 +1,12 @@
 <!-- made by domekisuzi @2022/10/27 -->
 
 <template>
-  <section id="cd-timeline" class="cd-container">
+  <section id="cd-timeline" class="cd-container" ref="target">
     <div class="cd-timeline-block">
       <div class="cd-timeline-img cd-picture">
       </div>
 
-      <div class="cd-timeline-content">
+      <div class="cd-timeline-content"  >
         <h2>Penta Consulting</h2>
         <div class="timeline-content-info">
           <span class="timeline-content-info-title">
@@ -34,7 +34,7 @@
       <div class="cd-timeline-img cd-movie">
       </div> <!-- cd-timeline-img -->
 
-      <div class="cd-timeline-content">
+      <div class="cd-timeline-content" >
         <h2>Title of section 2</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi
           placeat iure tempora laudantium ipsa ad debitis unde?</p>
@@ -46,7 +46,7 @@
       <div class="cd-timeline-img cd-picture">
       </div> <!-- cd-timeline-img -->
 
-      <div class="cd-timeline-content">
+      <div class="cd-timeline-content" >
         <h2>Title of section 3</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque
           asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem
@@ -57,11 +57,11 @@
       </div> <!-- cd-timeline-content -->
     </div> <!-- cd-timeline-block -->
 
+
     <div class="cd-timeline-block">
       <div class="cd-timeline-img cd-location">
       </div> <!-- cd-timeline-img -->
-
-      <div class="cd-timeline-content">
+      <div class="cd-timeline-content" >
         <h2>Title of section 4</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi
           placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
@@ -73,7 +73,7 @@
       <div class="cd-timeline-img cd-location">
       </div>
 
-      <div class="cd-timeline-content">
+      <div class="cd-timeline-content" >
         <h2>Title of section 5</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
         <span class="cd-date">Feb 18</span>
@@ -84,7 +84,7 @@
       <div class="cd-timeline-img cd-movie">
       </div> <!-- cd-timeline-img -->
 
-      <div class="cd-timeline-content">
+      <div class="cd-timeline-content" >
         <h2>Final Section</h2>
         <p>This is the content of the last section</p>
         <span class="cd-date">Feb 26</span>
@@ -94,6 +94,25 @@
 </template>
 
 <script setup>
+import {useLazyData} from "../../hook/index.js";
+
+
+// import  {useIntersectionObserver} from  '@vueuse/core'
+// const target = ref(null)
+ 
+
+const showUp =
+    function (){
+      return true
+    }
+const  {result,target} = useLazyData(showUp)
+// //这个组件貌似只适用于，是否有图片资源等 尝试加入移入动画！！
+// const  {stop} = useIntersectionObserver(target,
+//     ([{isIntersecting}] ) =>{
+//       targetIsVisible.value = isIntersecting
+//     }
+// )
+
 
 </script>
 

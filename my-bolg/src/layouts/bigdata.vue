@@ -33,7 +33,7 @@
                 <span>大数据部历史</span>
               </el-menu-item>
 
-              <el-menu-item index="4" disabled="true">
+              <el-menu-item index="4" disabled>
                 <el-icon><setting /></el-icon>
                 <span>吐槽版</span>
               </el-menu-item>
@@ -55,7 +55,7 @@
             <el-menu-item index="1" disabled>登录</el-menu-item>
             <el-menu-item index="2" disabled>主题</el-menu-item>
             <el-menu-item index="3">暂定</el-menu-item>
-            <el-sub-menu index="4" disabled="true">
+            <el-sub-menu index="4" disabled>
               <template #title>个人中心</template>
               <el-menu-item index="2-1">item one</el-menu-item>
               <el-menu-item index="2-2">item two</el-menu-item>
@@ -115,6 +115,9 @@ const handleOpen = ()=>{
 
 }
 const handleClose = () =>{
+
+}
+const handleHeader =  () =>{
 
 }
 function init(){

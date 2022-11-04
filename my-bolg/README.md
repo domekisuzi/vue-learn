@@ -87,3 +87,7 @@ npm i @kangc/v-md-editor@next -S  xx
         Vue.use(VueMarkdownEditor);
 
 真正的引入显示markdown的插件：
+
+引入vueuse插件，检测组件是否会滑动到的插件
+
+npm i @vueuse/core -S
