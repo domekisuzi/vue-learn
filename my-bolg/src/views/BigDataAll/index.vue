@@ -59,11 +59,13 @@ import MyCard from  '../../components/MyCard.vue'
 import  * as echarts from 'echarts'
 import {onBeforeMount, onMounted} from "vue";
 import {getAllButs} from "../../api/api.js";
+import {storeToRefs} from 'pinia'
+import  {useStore} from '../../store'
 
-const studentNumber = 1
-const adminNumber = 1
-const dayAcc =  1
-const butNumber = 1
+const studentNumber = ref(0)
+const adminNumber = ref(0)
+const dayAcc =  ref(0)
+const butNumber = ref(0)
 
 
 
@@ -147,17 +149,42 @@ const init = setTimeout (()=>{
   };
 
   option && myChart.setOption(option);
-} )
+},2000)
+
+
+
+
+const store = useStore()
+
+
+
 onBeforeMount(
-    ()=>{
+      () => {
       //接口经测试无误
-      // console.log(login())
-      console.log(getAllButs())
+      //需要通过这种形式才能获得相应数据,需要进行提交才能修改这种响应数据
+      let {name, allButs, allStudents} = storeToRefs(store)
+      store.upStudents()
+      store.upAllButs()
+        //简单无脑且好用！
+        setTimeout(()=>{
+          butNumber.value =   store.allButsNumber
+          studentNumber.value =   store.allStudentsNumber
+          dayAcc.value = store.setUpDay
+          adminNumber.value = 16
+        },2000)
+      // console.log(name.value)
+      // //批量修改store数据
+      // store.$patch(state =>{
+      //   state.name = '123'
+      // })
     }
 )
+
 onMounted(
     ()=>{
+
       init
+
       // login()
     }
 )

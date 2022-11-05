@@ -28,9 +28,28 @@
 
 import * as echarts from 'echarts'
 import MyCard from "../../components/MyCard.vue";
+import {getButListByName} from "../../api/api.js";
+import {useStore} from "../../store/index.js";
+import {onBeforeMount} from "vue";
+
+let store = useStore()
+const butList = ref(null)
+onBeforeMount(()=>{
+  getButListByName(store.name).then(
+      res=>{
+        //将答辩list转为JSON
+        butList.value =eval("("+ res+")").length
+      }
+  )
+})
+
+onMounted(()=>{
+  initCharts
+})
+
 
 const  initCharts = setTimeout(()=>{
-      var myChart = echarts.init(document.getElementById('approximateRank'));
+  var myChart = echarts.init(document.getElementById('approximateRank'));
   let option = {
     backgroundColor: '#2c343c',
     title: {
@@ -95,7 +114,6 @@ const  initCharts = setTimeout(()=>{
       option && myChart.setOption(option);
 }
 )
-initCharts
 
 </script>
 

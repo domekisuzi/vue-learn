@@ -99,18 +99,7 @@ import Header from '../../components/Header.vue'
 import Footer from '../../components/Footer.vue'
 import Slider from "../../components/Slider.vue";
 import Skill from "../../components/Skill.vue";
-import {onBeforeMount} from "vue";
-import {storeToRefs} from 'pinia'
-import  {useStore} from '../../store'
 const hobby = 'src/assets/hobby.svg'
-const  store = useStore()
-
-onBeforeMount(()=>{
-    //需要通过这种形式才能获得相应数据,需要进行提交才能修改这种响应数据
-    let {name} =  storeToRefs( store)
-    console.log("################")
-     console.log(name)
-})
 
 const text = ref("## about me\n" +
     "\n" +
