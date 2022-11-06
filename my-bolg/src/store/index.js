@@ -23,7 +23,6 @@ export const useStore = defineStore('storeId',{
                 // 这个为proxy类型
                 // console.log(this.allButs)
                 // 转为json数组再计算长度
-
                 return   eval("("+ this.allButs.data+")").length
             }
             else {
@@ -33,7 +32,7 @@ export const useStore = defineStore('storeId',{
         allStudentsNumber(){
             if(this.allStudents!=null){
                 // console.log(this.allStudents)
-                return   eval("("+ this.allStudents.data+")").length
+                return eval("("+ this.allStudents.data+")").length
             }
             else{
                 return  0
@@ -47,6 +46,7 @@ export const useStore = defineStore('storeId',{
 
     actions:{
         upName(val){
+            console.log('更改成功')
             this.name = val
         },
          //更新全局的数据，申请时再使用

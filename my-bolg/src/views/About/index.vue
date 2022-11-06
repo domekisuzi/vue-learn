@@ -2,6 +2,7 @@
     @2022/10/21
 -->
 <template>
+
   <div class="body">
     <div class="home">
       <div class="header">
@@ -99,6 +100,7 @@ import Header from '../../components/Header.vue'
 import Footer from '../../components/Footer.vue'
 import Slider from "../../components/Slider.vue";
 import Skill from "../../components/Skill.vue";
+import {ElMessage, ElMessageBox} from "element-plus";
 const hobby = 'src/assets/hobby.svg'
 
 const text = ref("## about me\n" +
@@ -147,6 +149,8 @@ const text = ref("## about me\n" +
     "- 不怎么会写网页\n" +
     "- 家乡话n1（准）水平\n" +
     "\n")
+
+
 
 </script>
 

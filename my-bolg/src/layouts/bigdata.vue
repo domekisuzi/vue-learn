@@ -2,6 +2,7 @@
 
 <template>
   <div class="container">
+<!--    <MyDialog v-model:dialogTableVisible="dialogTableVisible"></MyDialog>-->
     <el-container>
       <el-aside width="200px">
         <el-row>
@@ -54,7 +55,9 @@
           >
             <el-menu-item index="1" disabled>登录</el-menu-item>
             <el-menu-item index="2" disabled>主题</el-menu-item>
-            <el-menu-item index="3">暂定</el-menu-item>
+            <el-menu-item index="3"
+            @click="open"
+            >{{ name }}</el-menu-item>
             <el-sub-menu index="4" disabled>
               <template #title>个人中心</template>
               <el-menu-item index="2-1">item one</el-menu-item>
@@ -70,7 +73,7 @@
           </el-menu>
         </el-header>
         <el-main>
-          <component :is="currentComponent.com"></component>
+          <component :is="currentComponent.com" ref="child"></component>
         </el-main>
       </el-container>
     </el-container>
@@ -80,6 +83,7 @@
 
 <script setup>
 import * as echarts from "vue"
+// import  MyDialog  from  '@/components/MyDialog.vue'
 import {
   Document,
   Menu as IconMenu,
@@ -90,8 +94,15 @@ import All from  '@/views/BigDataAll/index.vue'
 import History from  '@/views/BigDataHistory/index.vue'
 import Feedback from  '@/views/BigDataFeedback/index.vue'
 import Person from  '@/views/BigDataPerson/index.vue'
-import {markRaw, reactive} from "vue";
+import {getCurrentInstance, markRaw, onMounted, reactive} from "vue";
+import {useStore} from "../store/index.js";
 
+const store = useStore()
+const name = ref(store.name)
+
+
+//使用v-model实现双向绑定，父传子
+// const dialogTableVisible = ref(false)
 //markRaw 可以使得组件不去响应
 let componentList  =  reactive([
     {name:'all',com:markRaw(All)},
@@ -99,14 +110,31 @@ let componentList  =  reactive([
   {name:'history',com:markRaw(History)},
   {name:'feedback',com:markRaw(Feedback)},
 ]);
-
+const test = ref(null)
+const  open = ()=>{
+  const newName = prompt("输入你想查找的名字",'')
+  name.value = newName
+  store.upName(newName)
+}
 let currentComponent = reactive({com:componentList[0].com})
+onMounted(()=>{
+  test.value = getCurrentInstance().appContext
 
+})
 
 /**
  * 处理侧边栏
  * @param index
  */
+const props = defineProps(
+    {
+      dialogTableVisible: {
+        type:Boolean,
+        default:false
+      }
+    }
+)
+const child = ref(null)
 
 const handleSelect = (index)=>{
   currentComponent.com  = componentList[index-1].com
@@ -120,6 +148,10 @@ const handleClose = () =>{
 const handleHeader =  () =>{
 
 }
+
+
+
+
 function init(){
 
 }

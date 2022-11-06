@@ -34,12 +34,23 @@ import {onBeforeMount} from "vue";
 
 let store = useStore()
 const butList = ref(null)
+const butNumber = ref(0)
+// const butAcc = ref(0)
+const butAvg = ref(0)
+
 onBeforeMount(()=>{
   getButListByName(store.name).then(
       res=>{
         //将答辩list转为JSON
-        butList.value =eval("("+ res+")").length
+        console.log(res)
+        //    butList.value =eval("("+ res+")")
+        let data = eval("("+ res['data']+")")
+        butList.value = data
+        butNumber.value = data.length
+        console.log(butList.value)
+        // butAvg.value = data.
       }
+
   )
 })
 

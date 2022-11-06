@@ -21,7 +21,7 @@ export  const getAllNotes = () =>{
 //获取所有答辩学生
 export const getAllStudents = () =>{
     return service({
-        url:'note/getAllNotes',
+        url:'student/getAllStudent',
         method:'GET',
         responseType:'text'
     })

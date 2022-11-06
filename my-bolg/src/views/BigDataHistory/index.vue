@@ -94,18 +94,16 @@
 </template>
 
 <script setup>
-import {useLazyData} from "../../hook/index.js";
-
-
+// import {useLazyData} from "../../hook/index.js";
 // import  {useIntersectionObserver} from  '@vueuse/core'
 // const target = ref(null)
  
-
-const showUp =
-    function (){
-      return true
-    }
-const  {result,target} = useLazyData(showUp)
+//
+// const showUp =
+//     function (){
+//       return true
+//     }
+// const  {result,target} = useLazyData(showUp)
 // //这个组件貌似只适用于，是否有图片资源等 尝试加入移入动画！！
 // const  {stop} = useIntersectionObserver(target,
 //     ([{isIntersecting}] ) =>{

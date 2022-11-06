@@ -57,10 +57,11 @@
 <script setup>
 import MyCard from  '../../components/MyCard.vue'
 import  * as echarts from 'echarts'
-import {onBeforeMount, onMounted} from "vue";
+import {defineComponent, getCurrentInstance, onBeforeMount, onMounted} from "vue";
 import {getAllButs} from "../../api/api.js";
 import {storeToRefs} from 'pinia'
 import  {useStore} from '../../store'
+import {getRank} from "../../tool/tool.js";
 
 const studentNumber = ref(0)
 const adminNumber = ref(0)
@@ -137,20 +138,19 @@ const init = setTimeout (()=>{
           borderRadius: [50,50,0,0]
         },
         barWidth: '60',
-        data: [10, 52, 200, 330, 220]
+        data: [12, 52, 200, 330, 220]
       },
       {
         name: '平均分差',
         type: 'line',
         yAxisIndex: 1,
-        data: [1000, 500, 2000, 3000, 2000]
+        data: [20, 500, 2000, 3000, 2000]
       }
     ]
   };
 
   option && myChart.setOption(option);
 },2000)
-
 
 
 
@@ -171,7 +171,9 @@ onBeforeMount(
           studentNumber.value =   store.allStudentsNumber
           dayAcc.value = store.setUpDay
           adminNumber.value = 16
+          getRank('张丹')
         },2000)
+
       // console.log(name.value)
       // //批量修改store数据
       // store.$patch(state =>{
