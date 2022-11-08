@@ -57,7 +57,7 @@
 <script setup>
 import MyCard from  '../../components/MyCard.vue'
 import  * as echarts from 'echarts'
-import {defineComponent, getCurrentInstance, onBeforeMount, onMounted} from "vue";
+import {defineComponent, getCurrentInstance, onBeforeMount, onMounted, toRaw} from "vue";
 import {getAllButs} from "../../api/api.js";
 import {storeToRefs} from 'pinia'
 import  {useStore} from '../../store'
@@ -67,7 +67,9 @@ const studentNumber = ref(0)
 const adminNumber = ref(0)
 const dayAcc =  ref(0)
 const butNumber = ref(0)
-
+const grade21 = ref(null)
+const grade22 = ref(null)
+const avgGap  = ref(null)
 
 
 const init = setTimeout (()=>{
@@ -165,13 +167,16 @@ onBeforeMount(
       let {name, allButs, allStudents} = storeToRefs(store)
       store.upStudents()
       store.upAllButs()
+      store.upGradeStatus()
         //简单无脑且好用！
         setTimeout(()=>{
           butNumber.value =   store.allButsNumber
           studentNumber.value =   store.allStudentsNumber
           dayAcc.value = store.setUpDay
           adminNumber.value = 16
-          getRank('张丹')
+          grade21.value =  eval( "("+ store.gradeStatus['grade21'].data +")")
+          grade22.value =  eval( "("+ store.gradeStatus['grade22'].data +")")
+          // getRank('张丹')
         },2000)
 
       // console.log(name.value)
@@ -184,9 +189,7 @@ onBeforeMount(
 
 onMounted(
     ()=>{
-
       init
-
       // login()
     }
 )

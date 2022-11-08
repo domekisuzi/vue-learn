@@ -4,9 +4,20 @@
   <el-container>
     <el-row :gutter="20">
        <el-col :span="8">
-         <MyCard  class="card-list">
 
-         </MyCard>
+
+           <el-table
+               :data="tableData"
+               style="width: 100% "
+               :row-class-name="tableRowClassName"
+               class="card-list"
+           >
+             <el-table-column prop="date" label="Date" width="180" />
+             <el-table-column prop="name" label="Name" width="180" />
+             <el-table-column prop="address" label="Address" />
+           </el-table>
+
+
        </el-col>
         <el-col :span="16"  class="col-right">
           <div class="div-top">
@@ -48,9 +59,8 @@ onBeforeMount(()=>{
         butList.value = data
         butNumber.value = data.length
         console.log(butList.value)
-        // butAvg.value = data.
-      }
 
+      }
   )
 })
 
@@ -125,7 +135,42 @@ const  initCharts = setTimeout(()=>{
       option && myChart.setOption(option);
 }
 )
+const  tableRowClassName = ({
+  row,rowIndex,
+})=>{
+  console.log(rowIndex)
+  if(rowIndex === 1){
+    return 'warning-row'
+  }
+  else if(rowIndex ===3){
+    return 'success-row'
+  }
+  return  ''
 
+}
+
+const tableData  = [
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+]
 </script>
 
 <style scoped>
@@ -167,5 +212,15 @@ const  initCharts = setTimeout(()=>{
  .card-bottom{
    height:  55%;
    margin-top: 10%;
+ }
+
+
+ .el-table :deep(.warning-row) {
+   --el-table-tr-bg-color: var(--el-color-warning-light-9);
+
+ }
+ .el-table :deep(.success-row) {
+
+   --el-table-tr-bg-color: var(--el-color-success-light-9);
  }
 </style>

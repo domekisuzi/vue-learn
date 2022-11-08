@@ -4,7 +4,7 @@
 
 //需要用storeToRef进行结构
 import {defineStore} from "pinia";
-import {getAllButs, getAllStudents} from "../api/api.js";
+import {getAllButs, getAllStudents, getGradeStatus} from "../api/api.js";
 export const useStore = defineStore('storeId',{
     state:  () =>{
         return {
@@ -12,7 +12,10 @@ export const useStore = defineStore('storeId',{
             name: '张丹',
             allButs: null,
             allStudents: null,
-            START_DAY: new Date(2022,6,20)
+            START_DAY: new Date(2022,6,20),
+            gradeStatus:{
+
+            }
         }
     },
 
@@ -23,12 +26,13 @@ export const useStore = defineStore('storeId',{
                 // 这个为proxy类型
                 // console.log(this.allButs)
                 // 转为json数组再计算长度
-                return   eval("("+ this.allButs.data+")").length
+                return eval("("+ this.allButs.data+")").length
             }
             else {
                 return 0
             }
         },
+
         allStudentsNumber(){
             if(this.allStudents!=null){
                 // console.log(this.allStudents)
@@ -38,6 +42,10 @@ export const useStore = defineStore('storeId',{
                 return  0
             }
         },
+        getGrade21() {
+              return eval("("+ this.gradeStatus['grade21'].data+")")
+            }
+        ,
         setUpDay(){
             //获取成立天数
             return Math.floor( (new Date() - this.START_DAY)/(24*60*60*1000))
@@ -57,7 +65,20 @@ export const useStore = defineStore('storeId',{
                 }
             )
         },
+        upGradeStatus() {
+            getGradeStatus(21).then(
+                res=>{
 
+                    this.gradeStatus['grade21'] = res
+                }
+            )
+            getGradeStatus(22).then(
+                res=>{
+                    this.gradeStatus['grade22'] = res
+                }
+            )
+
+        },
         upAllButs(){
             getAllButs().then(
                 res=>{

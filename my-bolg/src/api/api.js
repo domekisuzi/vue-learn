@@ -36,6 +36,7 @@ export const  insertOperate = (name,operate)=>{
         params: {"name":name,"operate":operate}
     })
 }
+
 export const getButListByName = (name)=> {
     return service({
         url: 'but/getButListByName',
@@ -45,4 +46,21 @@ export const getButListByName = (name)=> {
     })
 }
 
+export const getGradeStatus = (grade)=>{
+    return service({
+        url: 'customer/grade',
+        method: 'GET',
+        responseType: 'text',
+        params: {"grade": grade}
+    })
+}
+
+export const getCategoryButs = (category) =>{
+    return service({
+        url: 'but/category',
+        method: 'GET',
+        responseType: 'text',
+        params: {"category": category}
+})
+}
 // axios.get('path/shixun/but/getAllButs')   : 正确语法 =
