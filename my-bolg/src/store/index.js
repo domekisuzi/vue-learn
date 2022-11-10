@@ -5,6 +5,7 @@
 //需要用storeToRef进行结构
 import {defineStore} from "pinia";
 import {getAllButs, getAllStudents, getGradeStatus} from "../api/api.js";
+
 export const useStore = defineStore('storeId',{
     state:  () =>{
         return {
@@ -15,7 +16,13 @@ export const useStore = defineStore('storeId',{
             START_DAY: new Date(2022,6,20),
             gradeStatus:{
 
-            }
+            },
+            grade : 21,
+            //全局学生数据
+            student:{
+
+            },
+
         }
     },
 
@@ -42,10 +49,7 @@ export const useStore = defineStore('storeId',{
                 return  0
             }
         },
-        getGrade21() {
-              return eval("("+ this.gradeStatus['grade21'].data+")")
-            }
-        ,
+
         setUpDay(){
             //获取成立天数
             return Math.floor( (new Date() - this.START_DAY)/(24*60*60*1000))
@@ -53,35 +57,45 @@ export const useStore = defineStore('storeId',{
     },
 
     actions:{
-        upName(val){
-            console.log('更改成功')
+        async upName(val) {
             this.name = val
+            //这段代码加上就报错
+
+            // await getStudentByName(val).then
+            // (res => {
+            //     if (res.data !=='') {
+            //         this.grade = res.data['grade']
+            //         this.student = res.data
+            //
+            //     }
+            // }).catch(error => {
+            //     console.log(error)
+            // })
         },
          //更新全局的数据，申请时再使用
-         upStudents() {
-             getAllStudents().then(
-                res=>{
-                    this.allStudents =  res
+         async upStudents() {
+             await getAllStudents().then(
+                 res => {
+                     this.allStudents = res
+                 }
+             )
+         },
+        //目前只拓展为两个年级的比较
+        async upGradeStatus(grade1, grade2) {
+            await getGradeStatus(grade1).then(
+                res => {
+                    this.gradeStatus[grade1] = res
+                }
+            )
+            getGradeStatus(grade2).then(
+                res => {
+                    this.gradeStatus[grade2] = res
                 }
             )
         },
-        upGradeStatus() {
-            getGradeStatus(21).then(
-                res=>{
-
-                    this.gradeStatus['grade21'] = res
-                }
-            )
-            getGradeStatus(22).then(
-                res=>{
-                    this.gradeStatus['grade22'] = res
-                }
-            )
-
-        },
-        upAllButs(){
-            getAllButs().then(
-                res=>{
+        async upAllButs() {
+            await getAllButs().then(
+                res => {
                     this.allButs = res
                 }
             )

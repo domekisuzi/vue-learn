@@ -1,5 +1,5 @@
 
-import axios from "axios";
+　
 import service from "./request.js";
 //获取所有答辩
 export  const  getAllButs = () =>{
@@ -36,7 +36,14 @@ export const  insertOperate = (name,operate)=>{
         params: {"name":name,"operate":operate}
     })
 }
-
+export const getStudentByName = (name)=>{
+    return service({
+        url: 'student/getStudentByName',
+        method: 'GET',
+        responseType: 'text',
+        params: {"name": name}
+    })
+}
 export const getButListByName = (name)=> {
     return service({
         url: 'but/getButListByName',
@@ -45,7 +52,14 @@ export const getButListByName = (name)=> {
         params: {"name": name}
     })
 }
-
+export const getOperateCount = ()=>{
+    return service({
+        url: 'operate/count',
+        method: 'GET',
+        responseType: 'text'
+    }
+    )
+}
 export const getGradeStatus = (grade)=>{
     return service({
         url: 'customer/grade',

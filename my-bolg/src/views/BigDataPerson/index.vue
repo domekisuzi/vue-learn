@@ -3,31 +3,39 @@
 <template>
   <el-container>
     <el-row :gutter="20">
-       <el-col :span="8">
-
+       <el-col :span="10">
 
            <el-table
-               :data="tableData"
+               :data="butList"
                style="width: 100% "
                :row-class-name="tableRowClassName"
                class="card-list"
            >
-             <el-table-column prop="date" label="Date" width="180" />
-             <el-table-column prop="name" label="Name" width="180" />
-             <el-table-column prop="address" label="Address" />
+             <el-table-column prop="order" label="答辩名称" width="180" />
+             <el-table-column prop="score" label="分数" width="180" />
+             <el-table-column prop="context" label="首次答辩记录" />
            </el-table>
 
 
        </el-col>
-        <el-col :span="16"  class="col-right">
+        <el-col :span="14"  class="col-right">
           <div class="div-top">
-            <MyCard class="card-top"></MyCard>
-            <MyCard class="card-top"></MyCard>
-            <MyCard class="card-top"></MyCard>
+            <MyCard class="card-top">
+              <p>总分</p>
+              <h1>{{sumScores}}</h1>
+            </MyCard>
+            <MyCard class="card-top">
+              <p>平均分</p>
+              <h1>{{avgScores}}</h1>
+            </MyCard>
+            <MyCard class="card-top">
+              <p>暂无</p>
+            </MyCard>
           </div>
 
 
             <MyCard class="card-bottom" id="approximateRank">
+
             </MyCard>
 
         </el-col>
@@ -39,42 +47,51 @@
 
 import * as echarts from 'echarts'
 import MyCard from "../../components/MyCard.vue";
-import {getButListByName} from "../../api/api.js";
+import {getButListByName, insertOperate} from "../../api/api.js";
 import {useStore} from "../../store/index.js";
-import {onBeforeMount} from "vue";
+import {onBeforeMount, onMounted, watch} from "vue";
+import {getRange, getStatus} from "../../tool/tool.js";
+
+import {storeToRefs} from "pinia";
 
 let store = useStore()
 const butList = ref(null)
 const butNumber = ref(0)
-// const butAcc = ref(0)
-const butAvg = ref(0)
 
-onBeforeMount(()=>{
-  getButListByName(store.name).then(
-      res=>{
-        //将答辩list转为JSON
-        console.log(res)
-        //    butList.value =eval("("+ res+")")
-        let data = eval("("+ res['data']+")")
-        butList.value = data
-        butNumber.value = data.length
-        console.log(butList.value)
+const avgScores = ref(0)
+const sumScores = ref(0)
+const {name} = storeToRefs(store)
+const pieData = ref (null)
+const pieName = ref("年级均分占比")
+//这个意为获取某个比较人数为多少
+const pieLength = ref(0)
 
-      }
-  )
+watch(name,(newValue,oldValue)=>{
+  console.log("检测到了变化")
+  setTimeout(updateData(),1000)
+  insertOperate( store.name,"更改查看人")
+  initCharts
 })
+var myChart
+onBeforeMount(()=>{
+  setTimeout(updateData(),1500)
+  insertOperate( store.name,"查看大数据部个人")
+})
+
 
 onMounted(()=>{
   initCharts
 })
 
-
 const  initCharts = setTimeout(()=>{
-  var myChart = echarts.init(document.getElementById('approximateRank'));
-  let option = {
+      if(myChart !=null && myChart !=="" && myChart !==undefined){
+        myChart.dispose()
+      }
+      myChart = echarts.init(document.getElementById('approximateRank'));
+      let option = {
     backgroundColor: '#2c343c',
     title: {
-      text: 'Customized Pie',
+      text: pieName.value,
       left: 'center',
       top: 20,
       textStyle: {
@@ -86,8 +103,8 @@ const  initCharts = setTimeout(()=>{
     },
     visualMap: {
       show: false,
-      min: 80,
-      max: 600,
+      min: 0,
+      max: pieLength.value,
       inRange: {
         colorLightness: [0, 1]
       }
@@ -98,13 +115,8 @@ const  initCharts = setTimeout(()=>{
         type: 'pie',
         radius: '55%',
         center: ['50%', '50%'],
-        data: [
-          { value: 335, name: 'Direct' },
-          { value: 310, name: 'Email' },
-          { value: 274, name: 'Union Ads' },
-          { value: 235, name: 'Video Ads' },
-          { value: 400, name: 'Search Engine' }
-        ].sort(function (a, b) {
+        data: pieData.value.
+        sort(function (a, b) {
           return a.value - b.value;
         }),
         roseType: 'radius',
@@ -122,7 +134,7 @@ const  initCharts = setTimeout(()=>{
         itemStyle: {
           color: '#c23531',
           shadowBlur: 200,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: 'rgba(250,88,88,0.5)'
         },
         animationType: 'scale',
         animationEasing: 'elasticOut',
@@ -132,45 +144,42 @@ const  initCharts = setTimeout(()=>{
       }
     ]
   };
-      option && myChart.setOption(option);
+              option && myChart.setOption(option);
 }
-)
+,2500)
+
+const updateData =() => {
+      console.log("开始更新数据")
+      getButListByName(name.value).then(
+          res => {
+            //将答辩list转为JSON
+            //    butList.value =eval("("+ res+")")
+            let data = eval("(" + res['data'] + ")")
+            butList.value = data
+            butNumber.value = data.length
+          }
+      )
+      let {length, result} = getStatus()
+      console.log(length,result)
+      pieLength.value = length
+      sumScores.value = result['sumScores']
+      avgScores.value = result['avgScores'].toFixed(2)
+      pieData.value = getRange(21)
+    }
+
 const  tableRowClassName = ({
   row,rowIndex,
 })=>{
-  console.log(rowIndex)
-  if(rowIndex === 1){
+  //大于90标绿
+  if(row['score'] ===0){
     return 'warning-row'
   }
-  else if(rowIndex ===3){
+  else if(row['score'] >=90){
     return 'success-row'
   }
   return  ''
-
 }
 
-const tableData  = [
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-]
 </script>
 
 <style scoped>
@@ -192,10 +201,11 @@ const tableData  = [
    height: 80%;
    width: 100%;
  }
+
  .card-list{
    height: 80%;
- }
 
+ }
  .div-top{
    display: flex;
    flex-direction: row;
@@ -209,11 +219,11 @@ const tableData  = [
 
  }
 
+
  .card-bottom{
    height:  55%;
    margin-top: 10%;
  }
-
 
  .el-table :deep(.warning-row) {
    --el-table-tr-bg-color: var(--el-color-warning-light-9);

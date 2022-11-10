@@ -7,25 +7,28 @@
       </div>
 
       <div class="cd-timeline-content"  >
-        <h2>Penta Consulting</h2>
+        <h2>大数据部创建</h2>
         <div class="timeline-content-info">
           <span class="timeline-content-info-title">
             <i class="fa fa-certificate" aria-hidden="true"></i>
-            Front End Developer
+           创建日期
           </span>
           <span class="timeline-content-info-date">
             <i class="fa fa-calendar-o" aria-hidden="true"></i>
-            June 2016 - Present
+           2022年6月20日
           </span>
         </div>
-        <p>Working alongside the designer team implementing the designs, also developing custom solutions to address
-          team necessities.</p>
+        <p>
+          大数据部大概是这时候创建出来的吧（根据群创建的时间），当初大数据部的头er是这么说的：大一以比赛和项目为契机学大数据知识 大二是主力
+          大三领头且支援研究生参与发表论文 大四帮助考研或就业 研究生专门负责发论文 所以各位只要想，我们都可以可以去钻研到本科生不该有的高度
+        </p>
         <ul class="content-skills">
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>JavaScript</li>
-          <li>jQuery</li>
-          <li>Wordpress</li>
+          <li>Hadoop</li>
+          <li>Spark</li>
+          <li>Java</li>
+          <li>Linux</li>
+          <li>机器学习</li>
+          <li>深度学习</li>
         </ul>
       </div> <!-- cd-timeline-content -->
     </div> <!-- cd-timeline-block -->
@@ -35,10 +38,9 @@
       </div> <!-- cd-timeline-img -->
 
       <div class="cd-timeline-content" >
-        <h2>Title of section 2</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi
-          placeat iure tempora laudantium ipsa ad debitis unde?</p>
-        <span class="cd-date">Jan 18</span>
+        <h2>第一批新人入部</h2>
+        <p>我们在暑假的时候开始了第一批招新与答辩，我们最终有一半的顺利的通过了考核并成为了大佬，并于暑假上来两个月后成为了新一批答辩官</p>
+        <span class="cd-date">2022 7.1</span>
       </div> <!-- cd-timeline-content -->
     </div> <!-- cd-timeline-block -->
 
@@ -47,13 +49,9 @@
       </div> <!-- cd-timeline-img -->
 
       <div class="cd-timeline-content" >
-        <h2>Title of section 3</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque
-          asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem
-          ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident
-          pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod
-          veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
-        <span class="cd-date">Jan 24</span>
+        <h2>第二批新人入部</h2>
+        <p>我们的新一届面试官也参与了我们的招新，可喜可贺，我们的工作非常顺利，在22级某些新生的帮助下我们使得整个大数据将近一半的同学都开始报名参加学习</p>
+        <span class="cd-date">2022 9.15</span>
       </div> <!-- cd-timeline-content -->
     </div> <!-- cd-timeline-block -->
 
@@ -62,10 +60,9 @@
       <div class="cd-timeline-img cd-location">
       </div> <!-- cd-timeline-img -->
       <div class="cd-timeline-content" >
-        <h2>Title of section 4</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi
-          placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-        <span class="cd-date">Feb 14</span>
+        <h2>第一次获奖？</h2>
+        <p>大数据部的初代火影们组成的团队获得了互联网+省三等奖，emm其实这是在大数据部成立之前就在打的比赛，虽然不是非常大的成就但是我们还是小小的纪念以下吧。</p>
+        <span class="cd-date">2022 10.28</span>
       </div> <!-- cd-timeline-content -->
     </div> <!-- cd-timeline-block -->
 
@@ -74,26 +71,32 @@
       </div>
 
       <div class="cd-timeline-content" >
-        <h2>Title of section 5</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
-        <span class="cd-date">Feb 18</span>
+        <h2>你们来叙说的故事</h2>
+        <p>初代火影的时代就快要结束了，接下来是二代目火影还有将来的三代四代的故事了，这些故事里可能有获奖，招新，团建，或者是写下这些故事的人的私货（笑）...
+        不管怎么说，是时候该你们去续写故事，创造奇迹了。
+        </p>
+        <span class="cd-date">future</span>
       </div> <!-- cd-timeline-content -->
     </div> <!-- cd-timeline-block -->
 
-    <div class="cd-timeline-block">
-      <div class="cd-timeline-img cd-movie">
-      </div> <!-- cd-timeline-img -->
+<!--    <div class="cd-timeline-block">-->
+<!--      <div class="cd-timeline-img cd-movie">-->
+<!--      </div> &lt;!&ndash; cd-timeline-img &ndash;&gt;-->
 
-      <div class="cd-timeline-content" >
-        <h2>Final Section</h2>
-        <p>This is the content of the last section</p>
-        <span class="cd-date">Feb 26</span>
-      </div> <!-- cd-timeline-content -->
-    </div> <!-- cd-timeline-block -->
+<!--      <div class="cd-timeline-content" >-->
+<!--        <h2>Final Section</h2>-->
+<!--        <p>This is the content of the last section</p>-->
+<!--        <span class="cd-date">Feb 26</span>-->
+<!--      </div> &lt;!&ndash; cd-timeline-content &ndash;&gt;-->
+<!--    </div> &lt;!&ndash; cd-timeline-block &ndash;&gt;-->
+
   </section> <!-- cd-timeline -->
 </template>
 
 <script setup>
+import {insertOperate} from "../../api/api.js";
+
+insertOperate( store.name,"查看大数据部历史")
 // import {useLazyData} from "../../hook/index.js";
 // import  {useIntersectionObserver} from  '@vueuse/core'
 // const target = ref(null)
@@ -375,7 +378,6 @@ li {
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
     float: right;
   }
-
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
     left: auto;
     right: 122%;

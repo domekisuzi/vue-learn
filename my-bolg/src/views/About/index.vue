@@ -15,11 +15,10 @@
             <el-avatar src="src/assets/domekisuzi.png" :size="100"></el-avatar>
             <p>一个快乐肥宅</p>
             <el-divider></el-divider>
-
-            <span class="attr" v-for="i in 5" key="5">
+            <span class="attr" key="5">
                 <el-image :src="hobby"></el-image>
-                <h1>{{ i }}</h1>
-              </span>
+                <h1>ひかりになれ！</h1>
+            </span>
           </div>
         </Slider>
         <div class="other">
@@ -100,7 +99,8 @@ import Header from '../../components/Header.vue'
 import Footer from '../../components/Footer.vue'
 import Slider from "../../components/Slider.vue";
 import Skill from "../../components/Skill.vue";
-import {ElMessage, ElMessageBox} from "element-plus";
+import {insertOperate} from "../../api/api.js";
+
 const hobby = 'src/assets/hobby.svg'
 
 const text = ref("## about me\n" +
@@ -149,7 +149,7 @@ const text = ref("## about me\n" +
     "- 不怎么会写网页\n" +
     "- 家乡话n1（准）水平\n" +
     "\n")
-
+insertOperate("个人博客","查看关于我的")
 
 
 </script>

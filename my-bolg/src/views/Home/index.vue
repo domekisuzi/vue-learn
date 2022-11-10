@@ -9,12 +9,12 @@
       <div class="header">
         <Header/>
       </div>
+
       <!--      <h1>世界上只有一种英雄主义<br>便是注视过生活的真面目后，依然热爱它<br>-罗曼罗兰《米开朗基罗传》</h1>-->
       <FontAppear class="note">
         <template v-slot:context>
           {{everyday_context}}
         </template>
-
         <template v-slot:author>
           {{everyday_author}}
         </template>
@@ -23,8 +23,6 @@
     <MyNote></MyNote>
     <Footer></Footer>
   </div>
-
-
 </template>
 
 <script setup>
@@ -32,9 +30,10 @@ import Header from '../../components/Header.vue'
 import MyNote from '../../components/MyNote.vue'
 import Footer from '../../components/Footer.vue'
 import FontAppear from '../../components/FontAppear.vue'
-import {getAllNotes} from "../../api/api.js";
+import {insertOperate} from "../../api/api.js";
 
 
+insertOperate( "个人博客" ,"查看我的笔记")
 // router.push('/about')
 let everyday_context = ref('世界上只有一种英雄主义\n' +
     '便是注视过生活的真面目后\n依然热爱它\n'

@@ -57,11 +57,14 @@
 <script setup>
 import MyCard from  '../../components/MyCard.vue'
 import  * as echarts from 'echarts'
-import {defineComponent, getCurrentInstance, onBeforeMount, onMounted, toRaw} from "vue";
-import {getAllButs} from "../../api/api.js";
+import {  onBeforeMount, onMounted,  } from "vue";
+
 import {storeToRefs} from 'pinia'
 import  {useStore} from '../../store'
-import {getRank} from "../../tool/tool.js";
+import {getRankScore} from "../../tool/tool.js";
+import {insertOperate} from "../../api/api.js";
+
+
 
 const studentNumber = ref(0)
 const adminNumber = ref(0)
@@ -70,10 +73,15 @@ const butNumber = ref(0)
 const grade21 = ref(null)
 const grade22 = ref(null)
 const avgGap  = ref(null)
-
+var myChart;
 
 const init = setTimeout (()=>{
-  var myChart = echarts.init(document.getElementById('rank'));
+
+  if(myChart !=null && myChart !=="" && myChart !==undefined){
+    myChart.dispose()
+  }
+  myChart = echarts.init(document.getElementById('rank'));
+
   let  option = {
     title: {
       text: '大数据部rank',
@@ -131,7 +139,7 @@ const init = setTimeout (()=>{
           borderRadius: [50,50,0,0]
         },
         barWidth: '60',
-        data: [10, 52, 200, 330, 220]
+        data: grade21.value
       },
       {
         name: '22级',
@@ -140,50 +148,45 @@ const init = setTimeout (()=>{
           borderRadius: [50,50,0,0]
         },
         barWidth: '60',
-        data: [12, 52, 200, 330, 220]
+        data: grade22.value
       },
       {
         name: '平均分差',
         type: 'line',
         yAxisIndex: 1,
-        data: [20, 500, 2000, 3000, 2000]
+        data: avgGap.value
       }
     ]
   };
 
-  option && myChart.setOption(option);
-},2000)
+    option && myChart.setOption(option);
+  },2100)
 
 
 
 const store = useStore()
 
 
-
 onBeforeMount(
       () => {
       //接口经测试无误
       //需要通过这种形式才能获得相应数据,需要进行提交才能修改这种响应数据
-      let {name, allButs, allStudents} = storeToRefs(store)
+
       store.upStudents()
       store.upAllButs()
-      store.upGradeStatus()
+      store.upGradeStatus(21,22)
+        insertOperate( store.name,"查看大数据部总体数据")
         //简单无脑且好用！
         setTimeout(()=>{
           butNumber.value =   store.allButsNumber
           studentNumber.value =   store.allStudentsNumber
           dayAcc.value = store.setUpDay
           adminNumber.value = 16
-          grade21.value =  eval( "("+ store.gradeStatus['grade21'].data +")")
-          grade22.value =  eval( "("+ store.gradeStatus['grade22'].data +")")
-          // getRank('张丹')
+          let{array1,array2,array3 } =  getRankScore(21,22)
+          grade21.value =  array1
+          grade22.value =  array2
+          avgGap.value  = array3
         },2000)
-
-      // console.log(name.value)
-      // //批量修改store数据
-      // store.$patch(state =>{
-      //   state.name = '123'
-      // })
     }
 )
 

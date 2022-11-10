@@ -5,8 +5,7 @@
 </template>
 
 <script setup>
-import * as echarts from "vue"
-
+　
 const handleOpen = (key, keyPath) => {
   console.log(key, keyPath)
 }
@@ -16,7 +15,6 @@ const handleClose = (key, keyPath) => {
 
 
 function init(){
-
 }
 
 </script>

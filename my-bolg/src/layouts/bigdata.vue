@@ -24,7 +24,7 @@
                 </template>
               </el-menu-item>
 
-              <el-menu-item index="2">
+              <el-menu-item index="2" @click="isClickAble = false">
                 <el-icon><icon-menu /></el-icon>
                 <span>个人详情查看</span>
               </el-menu-item>
@@ -57,6 +57,7 @@
             <el-menu-item index="2" disabled>主题</el-menu-item>
             <el-menu-item index="3"
             @click="open"
+                          :disabled="isClickAble"
             >{{ name }}</el-menu-item>
             <el-sub-menu index="4" disabled>
               <template #title>个人中心</template>
@@ -82,8 +83,8 @@
 </template>
 
 <script setup>
-import * as echarts from "vue"
-// import  MyDialog  from  '@/components/MyDialog.vue'
+
+
 import {
   Document,
   Menu as IconMenu,
@@ -94,13 +95,16 @@ import All from  '@/views/BigDataAll/index.vue'
 import History from  '@/views/BigDataHistory/index.vue'
 import Feedback from  '@/views/BigDataFeedback/index.vue'
 import Person from  '@/views/BigDataPerson/index.vue'
-import {getCurrentInstance, markRaw, onMounted, reactive} from "vue";
+import {   markRaw, onMounted, reactive, watch} from "vue";
 import {useStore} from "../store/index.js";
+import router from "../router/index.js";
+import {ElMessage} from "element-plus";
+import {getStudentByName} from "../api/api.js";
 
 const store = useStore()
 const name = ref(store.name)
-
-
+const flag  = ref(null)
+const isClickAble = ref(true)
 //使用v-model实现双向绑定，父传子
 // const dialogTableVisible = ref(false)
 //markRaw 可以使得组件不去响应
@@ -111,14 +115,45 @@ let componentList  =  reactive([
   {name:'feedback',com:markRaw(Feedback)},
 ]);
 const test = ref(null)
+watch( flag,(oldValue,newValue)=>{
+  if (newValue ==="error1"){
+    ElMessage.error("该学生未入库，请通知管理员")
+  }
+  else if(newValue ==="error2"){
+    ElMessage.error("输入了非法的内容")
+  }
+  else if(newValue ==="success"){
+    ElMessage({
+      message:"修改成功",
+      type: 'success'
+    })
+  }
+})
+
+//修改名称栏
 const  open = ()=>{
+
   const newName = prompt("输入你想查找的名字",'')
-  name.value = newName
-  store.upName(newName)
+  if(name.value != null &&name.value !== "" && name.value !==undefined) {
+    getStudentByName(newName).then
+    (res => {
+      if (res.data !=='') {
+        name.value = newName
+        store.upName(newName)
+        flag.value = "success"
+      }
+      else  flag.value = "error1"
+    }).catch(error => {
+      console.log(error)
+    })
+  }
+  else {
+    flag.value = "error2"
+    ElMessage.error("输入了非法的内容！")
+  }
 }
 let currentComponent = reactive({com:componentList[0].com})
 onMounted(()=>{
-  test.value = getCurrentInstance().appContext
 
 })
 
@@ -179,7 +214,6 @@ function init(){
   width: 200px;
 }
 #menu-header{
-
   width: 100%;
   justify-content: right;
 }
