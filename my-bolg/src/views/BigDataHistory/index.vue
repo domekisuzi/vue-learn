@@ -95,7 +95,8 @@
 
 <script setup>
 import {insertOperate} from "../../api/api.js";
-
+import {useStore} from "../../store/index.js";
+const store = useStore()
 insertOperate( store.name,"查看大数据部历史")
 // import {useLazyData} from "../../hook/index.js";
 // import  {useIntersectionObserver} from  '@vueuse/core'

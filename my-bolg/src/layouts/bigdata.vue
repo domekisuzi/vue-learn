@@ -1,6 +1,7 @@
 <!-- made by domekisuzi @2022/10/26 -->
 
 <template>
+
   <div class="container">
 <!--    <MyDialog v-model:dialogTableVisible="dialogTableVisible"></MyDialog>-->
     <el-container>
@@ -108,48 +109,55 @@ const isClickAble = ref(true)
 //使用v-model实现双向绑定，父传子
 // const dialogTableVisible = ref(false)
 //markRaw 可以使得组件不去响应
+
 let componentList  =  reactive([
-    {name:'all',com:markRaw(All)},
+  {name:'all',com:markRaw(All)},
   {name:'person',com:markRaw(Person)},
   {name:'history',com:markRaw(History)},
   {name:'feedback',com:markRaw(Feedback)},
 ]);
+
 const test = ref(null)
 watch( flag,(oldValue,newValue)=>{
   if (newValue ==="error1"){
     ElMessage.error("该学生未入库，请通知管理员")
+    // alert("该学生未入库，请通知管理员")
   }
   else if(newValue ==="error2"){
-    ElMessage.error("输入了非法的内容")
+    // ElMessage.error("输入了非法的内容")
+    alert("输入了非法的内容")
   }
   else if(newValue ==="success"){
-    ElMessage({
-      message:"修改成功",
-      type: 'success'
-    })
+    // ElMessage({
+    //   message:"修改成功",
+    //   type: 'success'
+    // })
+    alert("修改成功")
   }
 })
 
 //修改名称栏
-const  open = ()=>{
+const  open = async () => {
 
-  const newName = prompt("输入你想查找的名字",'')
-  if(name.value != null &&name.value !== "" && name.value !==undefined) {
+
+
+  const newName = prompt("输入你想查找的名字", '')
+  // ElMessage.success("修改成功（若名字没入库则无法查询）")
+  if (name.value != null && name.value !== "" && name.value !== undefined) {
     getStudentByName(newName).then
     (res => {
-      if (res.data !=='') {
+
+      if (res.data !== '') {
         name.value = newName
         store.upName(newName)
         flag.value = "success"
-      }
-      else  flag.value = "error1"
+      } else flag.value = "error1"
     }).catch(error => {
       console.log(error)
     })
-  }
-  else {
+  } else {
     flag.value = "error2"
-    ElMessage.error("输入了非法的内容！")
+    // ElMessage.error("输入了非法的内容！")
   }
 }
 let currentComponent = reactive({com:componentList[0].com})

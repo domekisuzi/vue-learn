@@ -60,6 +60,14 @@ export const getOperateCount = ()=>{
     }
     )
 }
+getOperateCount().then(res=>{
+
+    console.log("查询成功")
+    console.log(res.data)
+})
+
+
+
 export const getGradeStatus = (grade)=>{
     return service({
         url: 'customer/grade',
@@ -67,6 +75,7 @@ export const getGradeStatus = (grade)=>{
         responseType: 'text',
         params: {"grade": grade}
     })
+
 }
 
 export const getCategoryButs = (category) =>{
@@ -77,4 +86,7 @@ export const getCategoryButs = (category) =>{
         params: {"category": category}
 })
 }
+
+
+
 // axios.get('path/shixun/but/getAllButs')   : 正确语法 =

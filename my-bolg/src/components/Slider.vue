@@ -15,6 +15,7 @@
 
 <style scoped>
 
+
 .slider{
   position: sticky;
   width: 25%;
