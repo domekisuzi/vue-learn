@@ -3,7 +3,7 @@
 
   <div class="my-header">
     <router-link class="header-img" to='about'>
-      <el-avatar src="domekisuzi" size="default"></el-avatar>
+      <el-avatar :src="domekisuzi" size="default"></el-avatar>
       <p>domekisuzi的个人博客</p>
     </router-link>
     <div class="header-title">
