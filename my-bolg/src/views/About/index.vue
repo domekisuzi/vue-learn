@@ -12,13 +12,14 @@
       <div class="self">
         <Slider>
           <div class="slider">
-            <el-avatar src="src/assets/domekisuzi.png" :size="100"></el-avatar>
+<!--            <el-avatar src="../../../assets/domekisuzi.png" :size="100"></el-avatar>-->
+            <img src="../../assets/domekisuzi.png"  >
             <p>一个快乐肥宅</p>
             <el-divider></el-divider>
-            <span class="attr" key="5">
-                <el-image :src="hobby"></el-image>
-                <h1>ひかりになれ！</h1>
-            </span>
+<!--            <span class="attr" key="5">-->
+<!--                <el-image :src="hobby"></el-image>-->
+<!--                <h1>ひかりになれ！</h1>-->
+<!--            </span>-->
           </div>
         </Slider>
         <div class="other">
@@ -27,25 +28,25 @@
             <el-row :gutter="10">
               <el-col :span="6">
                 <Skill>
-                  <el-image lazy="lazy" src="src/assets/android.svg"></el-image>
+                  <el-image lazy="lazy" :src="android"></el-image>
                   <span>安卓</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
-                  <el-image lazy="lazy" src="src/assets/bug.svg"></el-image>
+                  <el-image lazy="lazy" :src="bug"></el-image>
                   <span>爬虫</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
-                  <el-image lazy="lazy" src="src/assets/c++.svg"></el-image>
+                  <el-image lazy="lazy" :src="c_plus"></el-image>
                   <span>c/c++</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
-                  <el-image lazy="lazy" src="src/assets/docker.svg"></el-image>
+                  <el-image lazy="lazy" :src="docker"></el-image>
                   <span>docker</span>
                 </Skill>
               </el-col>
@@ -53,25 +54,25 @@
             <el-row :gutter="10">
               <el-col :span="6">
                 <Skill>
-                  <el-image lazy="lazy" src="src/assets/linux.svg"></el-image>
+                  <el-image lazy="lazy" :src="linux"></el-image>
                   <span>linux</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
-                  <el-image lazy="lazy" src="src/assets/spark.svg"></el-image>
+                  <el-image lazy="lazy" :src="spark"></el-image>
                   <span>spark</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
-                  <el-image lazy="lazy" src="src/assets/springboot.svg"></el-image>
+                  <el-image lazy="lazy" :src="springboot"></el-image>
                   <span>springboot</span>
                 </Skill>
               </el-col>
               <el-col :span="6">
                 <Skill>
-                  <el-image lazy="lazy" src="src/assets/vue.svg"></el-image>
+                  <el-image lazy="lazy" :src="vue_js"></el-image>
                   <span>vue.js</span>
                 </Skill>
               </el-col>
@@ -100,8 +101,16 @@ import Footer from '../../components/Footer.vue'
 import Slider from "../../components/Slider.vue";
 import Skill from "../../components/Skill.vue";
 import {insertOperate} from "../../api/api.js";
-
-const hobby = 'src/assets/hobby.svg'
+import android from  '../../assets/android.svg'
+import domekisuzi from  '../../assets/domekisuzi.png'
+import bug from  '../../assets/bug.svg'
+import c_plus from  '../../assets/c++.svg'
+import docker from '../../assets/docker.svg'
+import  linux from  '../../assets/linux.svg'
+import spark from '../../assets/linux.svg'
+import springboot from '../../assets/springboot.svg'
+import vue_js from '../../assets/vue.svg'
+const hobby = '../../assets/hobby.svg'
 
 const text = ref("## about me\n" +
     "\n" +
@@ -129,7 +138,7 @@ const text = ref("## about me\n" +
     "\n" +
     "- #### ~~当日本总理大臣~~\n" +
     "\n" +
-    "![chika](./src/assets/chika.webp)\n" +
+    "![chika](./../../assets/chika.webp)\n" +
     "\n" +
     "#### 关于为什么至今还是母胎solo \n" +
     "\n" +

@@ -2,81 +2,90 @@
 
 <template>
 
-  <div class="container">
+  <div class="first_container">
 <!--    <MyDialog v-model:dialogTableVisible="dialogTableVisible"></MyDialog>-->
     <el-container>
-      <el-aside width="200px">
-        <el-row>
-          <el-col :span="24">
-            <el-menu
-                id="menu-aside"
-                active-text-color="#ffd04b"
-                background-color="#545c64"
-                default-active="2"
-                text-color="#fff"
-                @open="handleOpen"
-                @close="handleClose"
-                @select="handleSelect"
-            >
-              <el-menu-item index="1">
-                <template #title>
-                  <el-icon><location/></el-icon>
-               <span>总体数据查看</span>
-                </template>
-              </el-menu-item>
+      <div class="aside">
+        <el-aside width="200px">
+          <el-row>
+            <el-col :span="24">
+              <el-menu
+                  id="menu-aside"
+                  active-text-color="#ffd04b"
+                  background-color="#545c64"
+                  default-active="2"
+                  text-color="#fff"
+                  @open="handleOpen"
+                  @close="handleClose"
+                  @select="handleSelect"
+              >
+                <el-menu-item index="1">
+                  <template #title>
+                    <el-icon><location/></el-icon>
+                    <span>总体数据查看</span>
+                  </template>
+                </el-menu-item>
 
-              <el-menu-item index="2" @click="isClickAble = false">
-                <el-icon><icon-menu /></el-icon>
-                <span>个人详情查看</span>
-              </el-menu-item>
+                <el-menu-item index="2" @click="isClickAble = false">
+                  <el-icon><icon-menu /></el-icon>
+                  <span>个人详情查看</span>
+                </el-menu-item>
 
-              <el-menu-item index="3">
-                <el-icon><document /></el-icon>
-                <span>大数据部历史</span>
-              </el-menu-item>
+                <el-menu-item index="3">
+                  <el-icon><document /></el-icon>
+                  <span>大数据部历史</span>
+                </el-menu-item>
 
-              <el-menu-item index="4" disabled>
-                <el-icon><setting /></el-icon>
-                <span>吐槽版</span>
-              </el-menu-item>
-            </el-menu>
-          </el-col>
-        </el-row>
+                <el-menu-item index="4" disabled>
+                  <el-icon><setting /></el-icon>
+                  <span>吐槽版</span>
+                </el-menu-item>
+              </el-menu>
+            </el-col>
+          </el-row>
+        </el-aside>
+      </div>
 
-      </el-aside>
+
       <el-container>
-        <el-header>
-          <el-menu
-              id="menu-header"
-              mode="horizontal"
-              background-color="#545c64"
-              text-color="#fff"
-              active-text-color="#ffd04b"
-              @select="handleHeader"
-          >
-            <el-menu-item index="1" disabled>登录</el-menu-item>
-            <el-menu-item index="2" disabled>主题</el-menu-item>
-            <el-menu-item index="3"
-            @click="open"
-                          :disabled="isClickAble"
-            >{{ name }}</el-menu-item>
-            <el-sub-menu index="4" disabled>
-              <template #title>个人中心</template>
-              <el-menu-item index="2-1">item one</el-menu-item>
-              <el-menu-item index="2-2">item two</el-menu-item>
-              <el-menu-item index="2-3">item three</el-menu-item>
-              <el-sub-menu index="2-4">
-                <template #title>item four</template>
-                      <el-menu-item index="2-4-1">item one</el-menu-item>
-                      <el-menu-item index="2-4-2">item two</el-menu-item>
-                      <el-menu-item index="2-4-3">item three</el-menu-item>
-              </el-sub-menu>
-            </el-sub-menu>
-          </el-menu>
-        </el-header>
-        <el-main>
-          <component :is="currentComponent.com" ref="child"></component>
-        </el-main>
+        <div class="right">
+          <div class="header">
+            <el-header>
+              <el-menu
+                  id="menu-header"
+                  mode="horizontal"
+                  background-color="#545c64"
+                  text-color="#fff"
+                  active-text-color="#ffd04b"
+                  @select="handleHeader"
+              >
+                <el-menu-item index="1" disabled>登录</el-menu-item>
+                <el-menu-item index="2" disabled>主题</el-menu-item>
+                <el-menu-item index="3"
+                              @click="open"
+                              :disabled="isClickAble"
+                >{{ name }}</el-menu-item>
+                <el-sub-menu index="4" disabled>
+                  <template #title>个人中心</template>
+                  <el-menu-item index="2-1">item one</el-menu-item>
+                  <el-menu-item index="2-2">item two</el-menu-item>
+                  <el-menu-item index="2-3">item three</el-menu-item>
+                  <el-sub-menu index="2-4">
+                    <template #title>item four</template>
+                    <el-menu-item index="2-4-1">item one</el-menu-item>
+                    <el-menu-item index="2-4-2">item two</el-menu-item>
+                    <el-menu-item index="2-4-3">item three</el-menu-item>
+                  </el-sub-menu>
+                </el-sub-menu>
+              </el-menu>
+            </el-header>
+          </div>
+          <div class="main">
+            <el-main>
+              <component :is="currentComponent.com" ref="child"></component>
+            </el-main>
+          </div>
+        </div>
       </el-container>
     </el-container>
   </div>
@@ -202,25 +211,47 @@ function init(){
 </script>
 
 <style scoped>
-.container{
+.first_container{
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #222C32;;
-  width:100%;
+  width:100vw;
+  height: 100vh;
 }
 .el-header{
-  width: 100%;
+
   padding: 0;
 }
+.header{
+  height: 10vh;
+
+}
+.main{
+  height: 90vh;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .el-main{
   /*background-color: #161634;*/
+  height: 100%;
+  width: 100%;
 }
-#menu-aside{
-  position: fixed;
-  height: 721.666px;
-  width: 200px;
+.el-aside{
+  height: 100vh;
 }
+.el-row{
+  height: 100%;
+}
+/*#menu-aside{*/
+/*  position: fixed;*/
+/*  height: 100vh;*/
+/*  width: 200px;*/
+/*}*/
 #menu-header{
   width: 100%;
   justify-content: right;
@@ -234,5 +265,6 @@ function init(){
 }
 .el-menu{
   border-right: 0;
+  height: 100%;
 }
 </style>

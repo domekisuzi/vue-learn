@@ -4,7 +4,7 @@
   <div class="my-footer">
     <div class="icon">
 <!--      修改大小需要加绑定-->
-      <el-avatar src="src/assets/domekisuzi-nobackground.png" :size="100"></el-avatar>
+      <el-avatar :src="domekisuzi" :size="100"></el-avatar>
       <p>domekisuzi</p>
     </div>
 
@@ -21,6 +21,7 @@
 
 <script setup>
 import {StarFilled} from '@element-plus/icons-vue'
+import  domekisuzi from '../assets/domekisuzi.png'
 </script>
 
 <style scoped>

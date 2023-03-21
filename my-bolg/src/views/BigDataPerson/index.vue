@@ -188,7 +188,7 @@ const  tableRowClassName = ({
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 721.666px;
+    height: 100%;
     width: 100%;
  }
 

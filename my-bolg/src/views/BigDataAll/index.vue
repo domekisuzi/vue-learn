@@ -2,7 +2,7 @@
 
 <template>
 
-  <div class="container">
+  <div class="second_container">
     <el-row :gutter="20" class="row-header">
       <el-col :span="8">
         <MyCard class="card-header">
@@ -202,13 +202,14 @@ onMounted(
 </script>
 
 <style scoped>
-.container{
+.second_container{
   /*background-color: #99a9bf;*/
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 721.666px;
+  height: 100%;
+  width: 100%;
 }
 .el-row{
   width: 100%;

@@ -51,8 +51,6 @@ onBeforeMount(()=>{
             noteTmp.push(tmp[i])
           }
         }
-
-
         s.value = noteTmp
         tags.value = Array.from(new Set(tagsTmp))
       }
@@ -60,7 +58,7 @@ onBeforeMount(()=>{
   getOperateCount().then(res=>{
     console.log(res)
     clickCount.value = res.data
-    dayCount.value =  -Math.floor( (new Date() - new Date(2022,11,1))/(24*60*60*1000))
+    dayCount.value =  Math.floor( (new Date() - new Date(2022,11,1))/(24*60*60*1000))
 
   })
 })

@@ -1,7 +1,7 @@
 <!-- made by domekisuzi @2022/10/30 -->
 
 <template>
-  <div class="container">
+  <div class="second_container">
     <div class="header">
       <Header></Header>
     </div>
@@ -24,7 +24,7 @@ import Footer from '../../components/Footer.vue'
 </script>
 
 <style scoped>
-.container{
+.second_container{
   background-image: url('../../assets/chainsaw.jpg');
   background-position: center center;
   background-repeat: no-repeat;

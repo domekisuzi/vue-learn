@@ -10,7 +10,7 @@
         <Header/>
       </div>
 
-      <!--      <h1>世界上只有一种英雄主义<br>便是注视过生活的真面目后，依然热爱它<br>-罗曼罗兰《米开朗基罗传》</h1>-->
+
       <FontAppear class="note">
         <template v-slot:context>
           {{everyday_context}}
