@@ -30,7 +30,7 @@ import Footer from '../../components/Footer.vue'
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  height: 721.666px;
+  height:100vh;
 }
 
 .header{

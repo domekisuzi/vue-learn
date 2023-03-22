@@ -47,7 +47,7 @@ let everyday_author = ref('-罗曼罗兰《米开朗基罗传》')
 <style scoped>
 
 .header{
-  margin-top: -721.666px;
+  margin-top: -100vh;
 }
 /*实现背景不会动 !! 关键技术*/
 .body{
@@ -61,7 +61,7 @@ let everyday_author = ref('-罗曼罗兰《米开朗基罗传》')
 .img-title{
   position: relative;
   /*height: 577.333px;*/
-  height: 721.666px;
+  height: 100vh;
 }
 
 /*记得加个薄片！*/
@@ -83,10 +83,11 @@ let everyday_author = ref('-罗曼罗兰《米开朗基罗传》')
 img{
   display: block;
   width: 100%;
-  height: 721.666px;
+  height: 100vh;
 }
 .note{
   margin-left: 35%;
+  margin-top: 30vh;
 }
 
 
